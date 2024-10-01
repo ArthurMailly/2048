@@ -13,4 +13,16 @@
         <maven.compiler.target>17</maven.compiler.target>
     </properties>
 
+
+
+    <dependencies>
+    
+
+        <dependency>
+            <groupId>net.lenni0451.commons</groupId>
+            <artifactId>swing</artifactId>
+            <version>1.6.0</version>
+        </dependency>
+
+    </dependencies>
 </project>

@@ -1,12 +1,14 @@
 package com.ares;
-
+import com.ares.Model.Case;
 import javax.swing.*;
+
 public class Main {
+
+    private Case lacase;
+
     public static void main(String[] args) {
-        JFrame frame = new JFrame("Dmqh");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(800, 600);
-        frame.setVisible(true);
-        System.out.println("Hello, World!");
+
+        Case lacase = new Case();
+
     }
 }

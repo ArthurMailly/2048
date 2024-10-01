@@ -4,11 +4,11 @@ import javax.swing.*;
 
 public class Main {
 
-    private Case lacase;
-
     public static void main(String[] args) {
 
-        Case lacase = new Case();
-
+        Case lacase = new Case(1,0);
+        lacase.printCase();
+        lacase.DeplacerCase(1,-1);
+        lacase.printCase();
     }
 }

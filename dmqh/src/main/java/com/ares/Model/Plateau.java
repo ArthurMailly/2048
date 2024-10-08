@@ -64,6 +64,8 @@ public class Plateau
 
     public void CreerCase(int x, int y, boolean b) { this.tableau_case[x][y] = new Case(x, y, b);}
 
+    public void CreerCaseNum(int x, int y, int n) { this.tableau_case[x][y] = new Case(x, y, n);}
+
     public void DeplacementGauche()
     {
 
@@ -82,6 +84,12 @@ public class Plateau
 
                     new_I = new_I - 1;
 
+                }
+
+                if ((new_I > 0) &&(this.tableau_case[new_I-1][j].getNombre() == this.tableau_case[new_I][j].getNombre()))
+                {
+                    CreerCaseNum(new_I-1, j, this.tableau_case[new_I-1][j].getNombre() * 2);
+                    CreerCase(new_I, j, true);
                 }
 
 

@@ -35,6 +35,14 @@ public class Case {
         MajCouleur();
     }
 
+    public Case(int abscisse, int ordonnee, int nombre)
+    {
+        this.x = abscisse;
+        this.y = ordonnee;
+        this.nombre = nombre;
+        MajCouleur();
+    }
+
     public void MajCouleur()
     {
         switch (nombre)

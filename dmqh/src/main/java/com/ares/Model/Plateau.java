@@ -45,9 +45,9 @@ public class Plateau
         }
     }
 
-    public void CreerCase(int x, int y, boolean b) { this.tableau_case[x][y] = new Case(x, y, b);}
+    public void CreerCase(int x, int y, boolean b) { this.tableau_case[x][y] = new Case(b);}
 
-    public void CreerCaseNum(int x, int y, int n) { this.tableau_case[x][y] = new Case(x, y, n);}
+    public void CreerCaseNum(int x, int y, int n) { this.tableau_case[x][y] = new Case(n);}
 
     public void PlaceCaseAleatoire()
     {
@@ -77,7 +77,6 @@ public class Plateau
                 while ((new_I > 0) && (this.tableau_case[new_I-1][j].getNombre() == 0))
                 {
                     this.tableau_case[new_I-1][j] = this.tableau_case[new_I][j];
-                    this.tableau_case[new_I][j].DeplacerCase(-1, 0);
                     CreerCase(new_I,j,true);
 
                     new_I = new_I - 1;
@@ -106,7 +105,6 @@ public class Plateau
                 while ((new_I < this.cote_x-1) && (this.tableau_case[new_I+1][j].getNombre() == 0))
                 {
                     this.tableau_case[new_I+1][j] = this.tableau_case[new_I][j];
-                    this.tableau_case[new_I][j].DeplacerCase(+1, 0);
                     CreerCase(new_I,j,true);
 
                     new_I = new_I + 1;
@@ -135,7 +133,6 @@ public class Plateau
                 while ((new_J > 0) && (this.tableau_case[i][new_J-1].getNombre() == 0))
                 {
                     this.tableau_case[i][new_J-1] = this.tableau_case[i][new_J];
-                    this.tableau_case[i][new_J].DeplacerCase(0, -1);
                     CreerCase(i,new_J,true);
 
                     new_J = new_J - 1;
@@ -164,7 +161,6 @@ public class Plateau
                 while ((new_J < this.cote_y-1) && (this.tableau_case[i][new_J+1].getNombre() == 0))
                 {
                     this.tableau_case[i][new_J+1] = this.tableau_case[i][new_J];
-                    this.tableau_case[i][new_J].DeplacerCase(0, 1);
                     CreerCase(i,new_J,true);
 
                     new_J = new_J + 1;

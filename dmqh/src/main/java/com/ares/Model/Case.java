@@ -4,15 +4,11 @@ import java.awt.Color;
 
 public class Case {
 
-    private int x;
-    private int y;
     private Color couleur;
     private int nombre;
 
-    public Case(int abscisse, int ordonnee, boolean zero)
+    public Case(boolean zero)
     {
-        this.x = abscisse;
-        this.y = ordonnee;
 
         if ( ! zero)
         {
@@ -35,10 +31,8 @@ public class Case {
         MajCouleur();
     }
 
-    public Case(int abscisse, int ordonnee, int nombre)
+    public Case(int nombre)
     {
-        this.x = abscisse;
-        this.y = ordonnee;
         this.nombre = nombre;
         MajCouleur();
     }
@@ -64,17 +58,9 @@ public class Case {
         }
     }
 
-    public void DeplacerCase(int DeplacementX, int DeplacementY)
-    {
-        this.x += DeplacementX;
-        this.y += DeplacementY;
-    }
-
 
     public void printCase()
     {
-        System.out.println("Abscisse: "+ x);
-        System.out.println("Ordonnée: "+ y);
         System.out.println("Nombre: "+ nombre);
         System.out.println("Couleur: "+ couleur);
     }

@@ -56,6 +56,7 @@ public class Plateau
             for (int i = 0; i < this.cote_x; i++)
             {
                 this.tableau_case[i][j].print();
+                System.out.print("\t");
             }
             System.out.print("\n");
         }
@@ -70,13 +71,20 @@ public class Plateau
         {
             for (int i = 1; i < this.cote_x; i++)
             {
-              
-                if (this.tableau_case[i-1][j].CaseNulle())
+
+                int new_I = i;
+
+                while ((new_I > 0) && (this.tableau_case[new_I-1][j].getNombre() == 0))
                 {
-                    this.tableau_case[i-1][j] = this.tableau_case[i][j];
-                    this.tableau_case[i][j].DeplacerCase(-1, 0);
-                    CreerCase(i,j,true);
+                    this.tableau_case[new_I-1][j] = this.tableau_case[new_I][j];
+                    this.tableau_case[new_I][j].DeplacerCase(-1, 0);
+                    CreerCase(new_I,j,true);
+
+                    new_I = new_I - 1;
+
                 }
+
+
 
             }
         }

@@ -76,8 +76,8 @@ public class Case {
         System.out.print(nombre);
     }
 
-    public boolean CaseNulle()
+    public int getNombre()
     {
-        return nombre == 0;
+        return nombre;
     }
 }

@@ -27,25 +27,8 @@ public class Plateau
 
         // Initialisation des deux premières cases différentes de 0
 
-        int case1_x = randomCase.nextInt(this.cote_x);
-        int case1_y = randomCase.nextInt(this.cote_y);
-        CreerCase(case1_x, case1_y, false);
-
-        System.out.print(case1_x);
-        System.out.println(case1_y);
-
-        int case2_x = randomCase.nextInt(this.cote_x);
-        int case2_y = randomCase.nextInt(this.cote_y);
-
-        while ((case1_x == case2_x) && (case1_y == case2_y))
-        {
-            case2_x = randomCase.nextInt(this.cote_x);
-            case2_y = randomCase.nextInt(this.cote_y);
-        }
-
-        CreerCase(case2_x, case2_y, false);
-        System.out.print(case2_x);
-        System.out.println(case2_y);
+        PlaceCaseAleatoire();
+        PlaceCaseAleatoire();
 
     }
 
@@ -66,9 +49,24 @@ public class Plateau
 
     public void CreerCaseNum(int x, int y, int n) { this.tableau_case[x][y] = new Case(x, y, n);}
 
+    public void PlaceCaseAleatoire()
+    {
+        Random randomCase = new Random();
+        int case_x = randomCase.nextInt(this.cote_x);
+        int case_y = randomCase.nextInt(this.cote_y);
+
+        while(this.tableau_case[case_x][case_y].getNombre() != 0)
+        {
+            case_x = randomCase.nextInt(this.cote_x);
+            case_y = randomCase.nextInt(this.cote_y);
+        }
+
+        CreerCase(case_x, case_y, false);
+
+    }
+
     public void DeplacementGauche()
     {
-
         for (int j = 0; j < this.cote_y; j++)
         {
             for (int i = 1; i < this.cote_x; i++)
@@ -83,7 +81,6 @@ public class Plateau
                     CreerCase(new_I,j,true);
 
                     new_I = new_I - 1;
-
                 }
 
                 if ((new_I > 0) &&(this.tableau_case[new_I-1][j].getNombre() == this.tableau_case[new_I][j].getNombre()))
@@ -92,10 +89,38 @@ public class Plateau
                     CreerCase(new_I, j, true);
                 }
 
+            }
+        }
+        PlaceCaseAleatoire();
+    }
 
+    public void DeplacementDroite()
+    {
+        for (int j = 0; j < this.cote_y; j++)
+        {
+            for (int i = this.cote_x - 1; i >= 0; i--)
+            {
+
+                int new_I = i;
+
+                while ((new_I < this.cote_x-1) && (this.tableau_case[new_I+1][j].getNombre() == 0))
+                {
+                    this.tableau_case[new_I+1][j] = this.tableau_case[new_I][j];
+                    this.tableau_case[new_I][j].DeplacerCase(+1, 0);
+                    CreerCase(new_I,j,true);
+
+                    new_I = new_I + 1;
+                }
+
+                if ((new_I < this.cote_x-1) &&(this.tableau_case[new_I+1][j].getNombre() == this.tableau_case[new_I][j].getNombre()))
+                {
+                    CreerCaseNum(new_I+1, j, this.tableau_case[new_I+1][j].getNombre() * 2);
+                    CreerCase(new_I, j, true);
+                }
 
             }
         }
+        PlaceCaseAleatoire();
     }
 
 

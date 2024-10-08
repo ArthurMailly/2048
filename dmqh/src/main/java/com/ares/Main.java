@@ -21,12 +21,16 @@ public class Main {
         plateau.AfficherPlateau();
         System.out.print("\n");
 
+
         plateau.DeplacementGauche();
         plateau.AfficherPlateau();
         System.out.print("\n");
 
+
         plateau.DeplacementBas();
         plateau.AfficherPlateau();
         System.out.print("\n");
+
+
     }
 }

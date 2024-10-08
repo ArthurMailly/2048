@@ -43,11 +43,12 @@ public class Plateau
             }
             System.out.print("\n");
         }
+
     }
 
     public void CreerCase(int x, int y, boolean b) { this.tableau_case[x][y] = new Case(b);}
 
-    public void CreerCaseNum(int x, int y, int n) { this.tableau_case[x][y] = new Case(n);}
+    public void CreerCaseNum(int x, int y, int n) { this.tableau_case[x][y] = new Case(n, false);}
 
     public void PlaceCaseAleatoire()
     {
@@ -82,15 +83,20 @@ public class Plateau
                     new_I = new_I - 1;
                 }
 
-                if ((new_I > 0) &&(this.tableau_case[new_I-1][j].getNombre() == this.tableau_case[new_I][j].getNombre()))
+                if ((new_I > 0) && (!this.tableau_case[new_I-1][j].getDeja_fusionne()) && (this.tableau_case[new_I-1][j].getNombre() == this.tableau_case[new_I][j].getNombre()))
                 {
-                    CreerCaseNum(new_I-1, j, this.tableau_case[new_I-1][j].getNombre() * 2);
+                    int num_case = this.tableau_case[new_I-1][j].getNombre() * 2;
+                    System.out.println(num_case);
+                    CreerCaseNum(new_I-1, j, num_case);
                     CreerCase(new_I, j, true);
+                    score += num_case;
+                    this.tableau_case[new_I-1][j].setDeja_fusionne(true);
                 }
 
             }
         }
         PlaceCaseAleatoire();
+        ToutesCasesPasFusionnees();
     }
 
     public void DeplacementDroite()
@@ -110,15 +116,20 @@ public class Plateau
                     new_I = new_I + 1;
                 }
 
-                if ((new_I < this.cote_x-1) &&(this.tableau_case[new_I+1][j].getNombre() == this.tableau_case[new_I][j].getNombre()))
+                if ((new_I < this.cote_x-1) && (!this.tableau_case[new_I+1][j].getDeja_fusionne()) && (this.tableau_case[new_I+1][j].getNombre() == this.tableau_case[new_I][j].getNombre()))
                 {
-                    CreerCaseNum(new_I+1, j, this.tableau_case[new_I+1][j].getNombre() * 2);
+                    int num_case = this.tableau_case[new_I+1][j].getNombre() * 2;
+                    System.out.println(num_case);
+                    CreerCaseNum(new_I+1, j, num_case);
                     CreerCase(new_I, j, true);
+                    score += num_case;
+                    this.tableau_case[new_I+1][j].setDeja_fusionne(true);
                 }
 
             }
         }
         PlaceCaseAleatoire();
+        ToutesCasesPasFusionnees();
     }
 
     public void DeplacementHaut()
@@ -138,15 +149,20 @@ public class Plateau
                     new_J = new_J - 1;
                 }
 
-                if ((new_J > 0) &&(this.tableau_case[i][new_J-1].getNombre() == this.tableau_case[i][new_J].getNombre()))
+                if ((new_J > 0) && (!this.tableau_case[i][new_J-1].getDeja_fusionne()) && (this.tableau_case[i][new_J-1].getNombre() == this.tableau_case[i][new_J].getNombre()))
                 {
-                    CreerCaseNum(i, new_J-1, this.tableau_case[i][new_J-1].getNombre() * 2);
+                    int num_case = this.tableau_case[i][new_J-1].getNombre() * 2;
+                    System.out.println(num_case);
+                    CreerCaseNum(i, new_J-1, num_case);
                     CreerCase(i, new_J, true);
+                    score += num_case;
+                    this.tableau_case[i][new_J-1].setDeja_fusionne(true);
                 }
 
             }
         }
         PlaceCaseAleatoire();
+        ToutesCasesPasFusionnees();
     }
 
     public void DeplacementBas()
@@ -166,15 +182,30 @@ public class Plateau
                     new_J = new_J + 1;
                 }
 
-                if ((new_J < this.cote_y-1) &&(this.tableau_case[i][new_J+1].getNombre() == this.tableau_case[i][new_J].getNombre()))
+                if ((new_J < this.cote_y-1) && (!this.tableau_case[i][new_J+1].getDeja_fusionne()) && (this.tableau_case[i][new_J+1].getNombre() == this.tableau_case[i][new_J].getNombre()))
                 {
-                    CreerCaseNum(i, new_J+1, this.tableau_case[i][new_J+1].getNombre() * 2);
+                    int num_case = this.tableau_case[i][new_J+1].getNombre() * 2;
+                    CreerCaseNum(i, new_J+1, num_case);
                     CreerCase(i, new_J, true);
+                    score += num_case;
+                    this.tableau_case[i][new_J+1].setDeja_fusionne(true);
                 }
 
             }
         }
         PlaceCaseAleatoire();
+        ToutesCasesPasFusionnees();
+    }
+
+    public void ToutesCasesPasFusionnees()
+    {
+        for (int i = 0; i < this.cote_x; i++)
+        {
+            for (int j = 0; j < this.cote_y; j++)
+            {
+                this.tableau_case[i][j].setDeja_fusionne(false);
+            }
+        }
     }
 
 

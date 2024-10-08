@@ -6,6 +6,7 @@ public class Case {
 
     private Color couleur;
     private int nombre;
+    private boolean deja_fusionne;
 
     public Case(boolean zero)
     {
@@ -29,12 +30,15 @@ public class Case {
         }
 
         MajCouleur();
+
+        this.deja_fusionne = false;
     }
 
-    public Case(int nombre)
+    public Case(int nombre, boolean fusion)
     {
         this.nombre = nombre;
         MajCouleur();
+        this.deja_fusionne = fusion;
     }
 
     public void MajCouleur()
@@ -59,12 +63,6 @@ public class Case {
     }
 
 
-    public void printCase()
-    {
-        System.out.println("Nombre: "+ nombre);
-        System.out.println("Couleur: "+ couleur);
-    }
-
     public void print()
     {
         System.out.print(nombre);
@@ -74,4 +72,8 @@ public class Case {
     {
         return nombre;
     }
+
+    public void setDeja_fusionne(boolean deja_fusionne) { this.deja_fusionne = deja_fusionne; }
+
+    public boolean getDeja_fusionne() {return this.deja_fusionne;}
 }

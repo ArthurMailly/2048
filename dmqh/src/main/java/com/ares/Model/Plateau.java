@@ -1,5 +1,7 @@
 package com.ares.Model;
 
+import java.util.Random;
+
 public class Plateau
 {
     private int score;
@@ -12,6 +14,74 @@ public class Plateau
         this.score = 0;
         this.cote_x = x;
         this.cote_y = y;
-        this.tableau_case = new Case[cote_x][cote_y];
+        Random randomCase = new Random();
+
+        this.tableau_case = new Case[this.cote_x][this.cote_y];
+        for (int i = 0; i < this.cote_x; i++)
+        {
+            for (int j = 0; j < this.cote_y; j++)
+            {
+                CreerCase(i, j, true);
+            }
+        }
+
+        // Initialisation des deux premières cases différentes de 0
+
+        int case1_x = randomCase.nextInt(this.cote_x);
+        int case1_y = randomCase.nextInt(this.cote_y);
+        CreerCase(case1_x, case1_y, false);
+
+        System.out.print(case1_x);
+        System.out.println(case1_y);
+
+        int case2_x = randomCase.nextInt(this.cote_x);
+        int case2_y = randomCase.nextInt(this.cote_y);
+
+        while ((case1_x == case2_x) && (case1_y == case2_y))
+        {
+            case2_x = randomCase.nextInt(this.cote_x);
+            case2_y = randomCase.nextInt(this.cote_y);
+        }
+
+        CreerCase(case2_x, case2_y, false);
+        System.out.print(case2_x);
+        System.out.println(case2_y);
+
     }
+
+    public void AfficherPlateau()
+    {
+        for (int j = 0; j < this.cote_y; j++)
+        {
+            for (int i = 0; i < this.cote_x; i++)
+            {
+                this.tableau_case[i][j].print();
+            }
+            System.out.print("\n");
+        }
+    }
+
+    public void CreerCase(int x, int y, boolean b) { this.tableau_case[x][y] = new Case(x, y, b);}
+
+    public void DeplacementGauche()
+    {
+
+        for (int j = 0; j < this.cote_y; j++)
+        {
+            for (int i = 1; i < this.cote_x; i++)
+            {
+              
+                if (this.tableau_case[i-1][j].CaseNulle())
+                {
+                    this.tableau_case[i-1][j] = this.tableau_case[i][j];
+                    this.tableau_case[i][j].DeplacerCase(-1, 0);
+                    CreerCase(i,j,true);
+                }
+
+            }
+        }
+    }
+
+
+
 }

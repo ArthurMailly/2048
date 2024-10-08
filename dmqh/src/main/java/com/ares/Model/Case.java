@@ -9,19 +9,27 @@ public class Case {
     private Color couleur;
     private int nombre;
 
-    public Case(int abscisse, int ordonnee)
+    public Case(int abscisse, int ordonnee, boolean zero)
     {
         this.x = abscisse;
         this.y = ordonnee;
 
-        double proba = Math.random();
-        if (proba < 0.8)
+        if ( ! zero)
         {
-            this.nombre = 2;
+            double proba = Math.random();
+            if (proba < 0.9)
+            {
+                this.nombre = 2;
+            }
+            else
+            {
+                this.nombre = 4;
+            }
         }
+
         else
         {
-            this.nombre = 4;
+            this.nombre = 0;
         }
 
         MajCouleur();
@@ -31,6 +39,7 @@ public class Case {
     {
         switch (nombre)
         {
+            case 0 -> couleur = new Color(255,255,255);
             case 2 -> couleur = new Color(238,228,218);
             case 4 -> couleur = new Color(237,224,200);
             case 8 -> couleur = new Color(242,177,121);
@@ -60,5 +69,15 @@ public class Case {
         System.out.println("Ordonnée: "+ y);
         System.out.println("Nombre: "+ nombre);
         System.out.println("Couleur: "+ couleur);
+    }
+
+    public void print()
+    {
+        System.out.print(nombre);
+    }
+
+    public boolean CaseNulle()
+    {
+        return nombre == 0;
     }
 }

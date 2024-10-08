@@ -123,6 +123,64 @@ public class Plateau
         PlaceCaseAleatoire();
     }
 
+    public void DeplacementHaut()
+    {
+        for (int i = 0; i < this.cote_x; i++)
+        {
+            for (int j = 1; j < this.cote_y; j++)
+            {
+
+                int new_J = j;
+
+                while ((new_J > 0) && (this.tableau_case[i][new_J-1].getNombre() == 0))
+                {
+                    this.tableau_case[i][new_J-1] = this.tableau_case[i][new_J];
+                    this.tableau_case[i][new_J].DeplacerCase(0, -1);
+                    CreerCase(i,new_J,true);
+
+                    new_J = new_J - 1;
+                }
+
+                if ((new_J > 0) &&(this.tableau_case[i][new_J-1].getNombre() == this.tableau_case[i][new_J].getNombre()))
+                {
+                    CreerCaseNum(i, new_J-1, this.tableau_case[i][new_J-1].getNombre() * 2);
+                    CreerCase(i, new_J, true);
+                }
+
+            }
+        }
+        PlaceCaseAleatoire();
+    }
+
+    public void DeplacementBas()
+    {
+        for (int i = 0; i < this.cote_x; i++)
+        {
+            for (int j = this.cote_y - 1; j >= 0; j--)
+            {
+
+                int new_J = j;
+
+                while ((new_J < this.cote_y-1) && (this.tableau_case[i][new_J+1].getNombre() == 0))
+                {
+                    this.tableau_case[i][new_J+1] = this.tableau_case[i][new_J];
+                    this.tableau_case[i][new_J].DeplacerCase(0, 1);
+                    CreerCase(i,new_J,true);
+
+                    new_J = new_J + 1;
+                }
+
+                if ((new_J < this.cote_y-1) &&(this.tableau_case[i][new_J+1].getNombre() == this.tableau_case[i][new_J].getNombre()))
+                {
+                    CreerCaseNum(i, new_J+1, this.tableau_case[i][new_J+1].getNombre() * 2);
+                    CreerCase(i, new_J, true);
+                }
+
+            }
+        }
+        PlaceCaseAleatoire();
+    }
+
 
 
 }

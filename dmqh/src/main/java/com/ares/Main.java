@@ -11,7 +11,22 @@ public class Main {
         Plateau plateau = new Plateau(4, 4);
         plateau.AfficherPlateau();
         System.out.print("\n");
+        /*
+
         plateau.DeplacementDroite();
         plateau.AfficherPlateau();
+        System.out.print("\n");
+
+        plateau.DeplacementHaut();
+        plateau.AfficherPlateau();
+        System.out.print("\n");
+
+        plateau.DeplacementGauche();
+        plateau.AfficherPlateau();
+
+         */
+        plateau.DeplacementBas();
+        plateau.AfficherPlateau();
+        System.out.print("\n");
     }
 }

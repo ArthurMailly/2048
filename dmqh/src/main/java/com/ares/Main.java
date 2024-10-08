@@ -1,12 +1,36 @@
 package com.ares;
+import com.ares.Model.Case;
+import com.ares.Model.Plateau;
 
 import javax.swing.*;
+
 public class Main {
+
     public static void main(String[] args) {
-        JFrame frame = new JFrame("Dmqh");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(800, 600);
-        frame.setVisible(true);
-        System.out.println("Hello, World!");
+
+        Plateau plateau = new Plateau(4, 4);
+        plateau.AfficherPlateau();
+        System.out.print("\n");
+
+
+        plateau.DeplacementDroite();
+        plateau.AfficherPlateau();
+        System.out.print("\n");
+
+        plateau.DeplacementHaut();
+        plateau.AfficherPlateau();
+        System.out.print("\n");
+
+
+        plateau.DeplacementGauche();
+        plateau.AfficherPlateau();
+        System.out.print("\n");
+
+
+        plateau.DeplacementBas();
+        plateau.AfficherPlateau();
+        System.out.print("\n");
+
+
     }
 }

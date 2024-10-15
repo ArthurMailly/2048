@@ -261,7 +261,7 @@ public class Plateau
         return this.score;
     }
 
-    public void copy(Plateau plateau2)
+    public void copyPlateau(Plateau plateau2)
     {
         this.score = plateau2.score;
         this.cote_x = plateau2.cote_x;
@@ -271,7 +271,7 @@ public class Plateau
         {
             for (int j = 0; j < cote_y; j++)
             {
-                this.tableau_case[i][j] = plateau2.tableau_case[i][j];
+                this.tableau_case[i][j].copyCase(plateau2.tableau_case[i][j]);
             }
         }
     }

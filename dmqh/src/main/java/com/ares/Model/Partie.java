@@ -35,7 +35,7 @@ public class Partie
     public void PeutEncoreJouer()
     {
         Plateau plateau2 = new Plateau(4, 4);
-        plateau2.copy(plateau);
+        plateau2.copyPlateau(plateau);
         if (plateau2.DeplacementGauche() || plateau2.DeplacementDroite() || plateau2.DeplacementHaut() || plateau2.DeplacementBas())
         {
             System.out.println("La partie n'est pas finie.");

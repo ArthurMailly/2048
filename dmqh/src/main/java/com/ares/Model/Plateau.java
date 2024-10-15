@@ -14,7 +14,6 @@ public class Plateau
         this.score = 0;
         this.cote_x = x;
         this.cote_y = y;
-        Random randomCase = new Random();
 
         this.tableau_case = new Case[this.cote_x][this.cote_y];
         for (int i = 0; i < this.cote_x; i++)
@@ -93,6 +92,7 @@ public class Plateau
 
                 if ((new_I > 0) && (!this.tableau_case[new_I-1][j].getDeja_fusionne()) && (this.tableau_case[new_I-1][j].getNombre() == this.tableau_case[new_I][j].getNombre()))
                 {
+                    deplacement_fait = true;
                     int num_case = this.tableau_case[new_I-1][j].getNombre() * 2;
                     CreerCaseNum(new_I-1, j, num_case);
                     CreerCase(new_I, j, true);
@@ -137,8 +137,8 @@ public class Plateau
 
                 if ((new_I < this.cote_x-1) && (!this.tableau_case[new_I+1][j].getDeja_fusionne()) && (this.tableau_case[new_I+1][j].getNombre() == this.tableau_case[new_I][j].getNombre()))
                 {
+                    deplacement_fait = true;
                     int num_case = this.tableau_case[new_I+1][j].getNombre() * 2;
-                    System.out.println(num_case);
                     CreerCaseNum(new_I+1, j, num_case);
                     CreerCase(new_I, j, true);
                     score += num_case;
@@ -182,6 +182,7 @@ public class Plateau
 
                 if ((new_J > 0) && (!this.tableau_case[i][new_J-1].getDeja_fusionne()) && (this.tableau_case[i][new_J-1].getNombre() == this.tableau_case[i][new_J].getNombre()))
                 {
+                    deplacement_fait = true;
                     int num_case = this.tableau_case[i][new_J-1].getNombre() * 2;
                     System.out.println(num_case);
                     CreerCaseNum(i, new_J-1, num_case);
@@ -227,6 +228,7 @@ public class Plateau
 
                 if ((new_J < this.cote_y-1) && (!this.tableau_case[i][new_J+1].getDeja_fusionne()) && (this.tableau_case[i][new_J+1].getNombre() == this.tableau_case[i][new_J].getNombre()))
                 {
+                    deplacement_fait = true;
                     int num_case = this.tableau_case[i][new_J+1].getNombre() * 2;
                     CreerCaseNum(i, new_J+1, num_case);
                     CreerCase(i, new_J, true);
@@ -259,6 +261,11 @@ public class Plateau
     public int getScore()
     {
         return this.score;
+    }
+
+    public Case getCase(int i,int j)
+    {
+        return this.tableau_case[i][j];
     }
 
     public void copyPlateau(Plateau plateau2)

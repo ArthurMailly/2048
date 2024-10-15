@@ -10,14 +10,6 @@ public class Main {
     public static void main(String[] args) {
 
         Partie partie = new Partie("Standard");
-        partie.showPlateau();
-
-        for (int i = 0; i < 10; i++)
-        {
-            partie.DeplacementGauche();
-            partie.showPlateau();
-            partie.PeutEncoreJouer();
-        }
-
+        partie.Jouer();
     }
 }

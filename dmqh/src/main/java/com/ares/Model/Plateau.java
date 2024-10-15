@@ -43,6 +43,7 @@ public class Plateau
             }
             System.out.print("\n");
         }
+        System.out.print("\n");
 
     }
 
@@ -66,8 +67,10 @@ public class Plateau
 
     }
 
-    public void DeplacementGauche()
+    public Boolean DeplacementGauche() // True si le déplacement a été fait
     {
+        Boolean deplacement_fait = false;
+
         for (int j = 0; j < this.cote_y; j++)
         {
             for (int i = 1; i < this.cote_x; i++)
@@ -77,16 +80,20 @@ public class Plateau
 
                 while ((new_I > 0) && (this.tableau_case[new_I-1][j].getNombre() == 0))
                 {
+                    if (this.tableau_case[new_I][j].getNombre() != 0)
+                    {
+                        deplacement_fait = true;
+                    }
                     this.tableau_case[new_I-1][j] = this.tableau_case[new_I][j];
                     CreerCase(new_I,j,true);
 
                     new_I = new_I - 1;
+
                 }
 
                 if ((new_I > 0) && (!this.tableau_case[new_I-1][j].getDeja_fusionne()) && (this.tableau_case[new_I-1][j].getNombre() == this.tableau_case[new_I][j].getNombre()))
                 {
                     int num_case = this.tableau_case[new_I-1][j].getNombre() * 2;
-                    System.out.println(num_case);
                     CreerCaseNum(new_I-1, j, num_case);
                     CreerCase(new_I, j, true);
                     score += num_case;
@@ -95,12 +102,20 @@ public class Plateau
 
             }
         }
-        PlaceCaseAleatoire();
-        ToutesCasesPasFusionnees();
+
+        if (deplacement_fait)
+        {
+            PlaceCaseAleatoire();
+            ToutesCasesPasFusionnees();
+        }
+
+        return deplacement_fait;
     }
 
-    public void DeplacementDroite()
+    public Boolean DeplacementDroite()
     {
+        Boolean deplacement_fait = false;
+
         for (int j = 0; j < this.cote_y; j++)
         {
             for (int i = this.cote_x - 1; i >= 0; i--)
@@ -110,6 +125,10 @@ public class Plateau
 
                 while ((new_I < this.cote_x-1) && (this.tableau_case[new_I+1][j].getNombre() == 0))
                 {
+                    if (this.tableau_case[new_I][j].getNombre() != 0)
+                    {
+                        deplacement_fait = true;
+                    }
                     this.tableau_case[new_I+1][j] = this.tableau_case[new_I][j];
                     CreerCase(new_I,j,true);
 
@@ -128,12 +147,19 @@ public class Plateau
 
             }
         }
-        PlaceCaseAleatoire();
-        ToutesCasesPasFusionnees();
+        if (deplacement_fait)
+        {
+            PlaceCaseAleatoire();
+            ToutesCasesPasFusionnees();
+        }
+
+        return deplacement_fait;
     }
 
-    public void DeplacementHaut()
+    public Boolean DeplacementHaut()
     {
+        Boolean deplacement_fait = false;
+
         for (int i = 0; i < this.cote_x; i++)
         {
             for (int j = 1; j < this.cote_y; j++)
@@ -143,6 +169,11 @@ public class Plateau
 
                 while ((new_J > 0) && (this.tableau_case[i][new_J-1].getNombre() == 0))
                 {
+                    if (this.tableau_case[i][new_J].getNombre() != 0)
+                    {
+                        deplacement_fait = true;
+                    }
+
                     this.tableau_case[i][new_J-1] = this.tableau_case[i][new_J];
                     CreerCase(i,new_J,true);
 
@@ -161,12 +192,19 @@ public class Plateau
 
             }
         }
-        PlaceCaseAleatoire();
-        ToutesCasesPasFusionnees();
+        if (deplacement_fait)
+        {
+            PlaceCaseAleatoire();
+            ToutesCasesPasFusionnees();
+        }
+
+        return deplacement_fait;
     }
 
-    public void DeplacementBas()
+    public Boolean DeplacementBas()
     {
+        Boolean deplacement_fait = false;
+
         for (int i = 0; i < this.cote_x; i++)
         {
             for (int j = this.cote_y - 1; j >= 0; j--)
@@ -176,6 +214,11 @@ public class Plateau
 
                 while ((new_J < this.cote_y-1) && (this.tableau_case[i][new_J+1].getNombre() == 0))
                 {
+                    if (this.tableau_case[i][new_J].getNombre() != 0)
+                    {
+                        deplacement_fait = true;
+                    }
+
                     this.tableau_case[i][new_J+1] = this.tableau_case[i][new_J];
                     CreerCase(i,new_J,true);
 
@@ -193,8 +236,13 @@ public class Plateau
 
             }
         }
-        PlaceCaseAleatoire();
-        ToutesCasesPasFusionnees();
+        if (deplacement_fait)
+        {
+            PlaceCaseAleatoire();
+            ToutesCasesPasFusionnees();
+        }
+
+        return deplacement_fait;
     }
 
     public void ToutesCasesPasFusionnees()
@@ -208,6 +256,24 @@ public class Plateau
         }
     }
 
+    public int getScore()
+    {
+        return this.score;
+    }
 
+    public void copy(Plateau plateau2)
+    {
+        this.score = plateau2.score;
+        this.cote_x = plateau2.cote_x;
+        this.cote_y = plateau2.cote_y;
+
+        for (int i = 0; i < cote_x; i++)
+        {
+            for (int j = 0; j < cote_y; j++)
+            {
+                this.tableau_case[i][j] = plateau2.tableau_case[i][j];
+            }
+        }
+    }
 
 }

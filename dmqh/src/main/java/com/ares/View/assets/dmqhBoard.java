@@ -1,57 +1,89 @@
 package com.ares.View.assets;
 
-import java.awt.BorderLayout;
+
 import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
+
 import java.awt.GridLayout;
 import java.awt.image.BufferedImage;
-import java.awt.Image;
-import java.io.File;
-import java.io.IOException;
+
+import java.util.ArrayList;
 import java.awt.Graphics;
 import java.awt.Color;
-import javax.imageio.ImageIO;
+
 import javax.swing.*;
-import com.ares.View.assets.Case;
+
 
 
 public class dmqhBoard extends JPanel
 {
     public BufferedImage fond;
     private int taille;
+    private ArrayList<Case> Cases = new ArrayList<Case>();
+
+    
 
     public dmqhBoard(int taille)
     {
-        this.taille = taille;
-        this.setLayout(new GridLayout(taille, taille));
-    }
-
-
-    public dmqhBoard()
-    {
     
-        try {
-            fond=ImageIO.read(new File("C:\\Users\\sfarf\\Bureau\\Repos_Git\\Java_2048\\2048\\dmqh\\src\\main\\resources\\dmqh_arriereplan.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        // try {
+        //     fond=ImageIO.read(new File("C:\\Users\\sfarf\\Bureau\\Repos_Git\\Java_2048\\2048\\dmqh\\src\\main\\resources\\dmqh_arriereplan.png"));
+        // } catch (IOException e) {
+        //     e.printStackTrace();
+        // }
         
-        JLabel picLabel = new JLabel(new ImageIcon(fond));
-        this.add(picLabel);
+        // JLabel picLabel = new JLabel(new ImageIcon(fond));
+        // this.add(picLabel);
+        this.taille = taille;
+        this.setBackground(Color.BLACK);
+        this.setLayout(new GridLayout(taille, taille));
+
+        Cases=createCaseArray(this);
+        for (Case obj : Cases)
+        {
+            System.out.println("Hello");
+            System.out.println(obj.valeur);
+            System.out.println(obj.cote);
+            System.out.println(obj.p);
+        }
+        this.addCasesToBoard();
+        dessinerCases(getGraphics());
     }
 
-    void createCase(Case c, dmqhBoard b, int [][] tab)
+    public ArrayList<Case> createCaseArray(dmqhBoard b)
     {
-        for(int i = 0; i < b.taille; i++)
+        for (int i = 0; i < b.taille; i++)
         {
-            for(int j = 0; j < b.taille; j++)
+            for (int j = 0; j < b.taille; j++)
             {
-                c = new Case(100, tab[i][j], new java.awt.Point(i*100, j*100));
-                //rajouter les cases au plateau de jeu, probleme de type
-                //b.add(c);
+                Case caseObj = new Case(150, 2, new java.awt.Point(i , j ), Color.RED);
+                Cases.add(caseObj);
             }
         }
+        return Cases;
         
+    }
+
+    public void addCasesToBoard()
+    {
+        for (Case obj : Cases)
+        {
+            this.add(obj);
+        }
+    }
+
+    public void dessinerCases(Graphics g)
+    {
+        GridBagConstraints gbc = new GridBagConstraints();
+        for (int i=0; i<taille; i++)
+        {
+            for (int j=0; j<taille; j++)
+            {
+                gbc.gridx = i;
+                gbc.gridy = j;
+                this.add(Cases.get(i*taille+j), gbc);
+            }
+            
+        }
     }
 
     

@@ -24,15 +24,6 @@ public class dmqhBoard extends JPanel
 
     public dmqhBoard(int taille)
     {
-    
-        // try {
-        //     fond=ImageIO.read(new File("C:\\Users\\sfarf\\Bureau\\Repos_Git\\Java_2048\\2048\\dmqh\\src\\main\\resources\\dmqh_arriereplan.png"));
-        // } catch (IOException e) {
-        //     e.printStackTrace();
-        // }
-        
-        // JLabel picLabel = new JLabel(new ImageIcon(fond));
-        // this.add(picLabel);
         this.taille = taille;
         this.setBackground(Color.BLACK);
         this.setLayout(new GridLayout(taille, taille));
@@ -55,7 +46,7 @@ public class dmqhBoard extends JPanel
         {
             for (int j = 0; j < b.taille; j++)
             {
-                Case caseObj = new Case(150, 2, new java.awt.Point(i , j ), Color.RED);
+                Case caseObj = new Case(300, 2, new java.awt.Point(i , j ), Color.WHITE);
                 Cases.add(caseObj);
             }
         }

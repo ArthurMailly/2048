@@ -1,27 +1,30 @@
 package com.ares.Model;
 import java.util.Scanner;
 
+import com.ares.Controller.controllerDmqh;
+
 public class Partie
 {
+    public static Partie instance;
+    
+    
     private Plateau plateau;
     private int cote_x;
     private int cote_y;
 
-    public Partie(String difficulte)
+    public Partie(int difficulte)
     {
-        switch(difficulte)
-        {
-            case "Standard":
-                cote_x = 4;
-                cote_y = 4;
-                break;
-            case "Grand":
-                cote_x = 8;
-                cote_y = 8;
-                break;
-        }
-
+        this.cote_x = difficulte;
+        this.cote_y = difficulte;
         this.plateau = new Plateau(cote_x, cote_y);
+    }
+    public static Partie getInstance()
+    {
+        if (instance == null)
+        {
+            instance = new Partie(4);
+        }
+        return instance;
     }
 
     public Plateau getPlateau() {return plateau;}
@@ -41,6 +44,8 @@ public class Partie
     public void DeplacementHaut() {this.plateau.DeplacementHaut();}
 
     public void DeplacementBas() {this.plateau.DeplacementBas();}
+
+    public Case[][] getTableau() {return this.plateau.getTableau();}   
 
     public Boolean PeutEncoreJouer()
     {

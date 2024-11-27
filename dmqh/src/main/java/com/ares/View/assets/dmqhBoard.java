@@ -31,10 +31,8 @@ public class dmqhBoard extends JPanel
         Cases=createCaseArray(this);
         for (Case obj : Cases)
         {
-            System.out.println("Hello");
+            System.out.println(obj);
             System.out.println(obj.valeur);
-            System.out.println(obj.cote);
-            System.out.println(obj.p);
         }
         this.addCasesToBoard();
         dessinerCases(getGraphics());
@@ -77,7 +75,10 @@ public class dmqhBoard extends JPanel
         }
     }
 
-    
+    public int getTaille()
+    {
+        return taille;
+    }
 
 
     // @Override

@@ -1,25 +1,34 @@
 package com.ares.Controller;
 
 import com.ares.View.gameFrame;
+import com.ares.View.assets.dmqhBoard;
 import com.ares.Model.Partie;
 import com.ares.Model.Plateau;
+import com.ares.Model.Case;
 
 public class controllerDmqh {
+    private gameFrame gameFrame;
     private static controllerDmqh instance;
-    private Partie partie;
+
     private controllerDmqh() {
 
     }
     
-    public controllerDmqh getInstance() {
+    public static controllerDmqh getInstance() {
         if (instance == null) {
             instance = new controllerDmqh();
         }
         return instance;
     }
 
-    public Partie getPartie() {
-        return partie;
+    public void update_tableau_case() {
+        Partie.getInstance().showPlateau();
+    }
+
+    // public void AfficherPlateau
+
+    public int getSize(){
+        return gameFrame.taille;
     }
 
     

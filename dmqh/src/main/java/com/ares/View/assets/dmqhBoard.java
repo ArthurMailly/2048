@@ -4,13 +4,15 @@ package com.ares.View.assets;
 import java.awt.GridBagConstraints;
 
 import java.awt.GridLayout;
+import java.awt.Point;
 import java.awt.image.BufferedImage;
-
 import java.util.ArrayList;
 import java.awt.Graphics;
 import java.awt.Color;
 
 import javax.swing.*;
+import com.ares.Model.Partie;
+import com.ares.Controller.controllerDmqh;
 
 
 
@@ -19,33 +21,37 @@ public class dmqhBoard extends JPanel
     public BufferedImage fond;
     private int taille;
     private ArrayList<Case> Cases = new ArrayList<Case>();
+    private static controllerDmqh controller = controllerDmqh.getInstance();
 
     
 
-    public dmqhBoard(int taille)
+    public dmqhBoard()
     {
-        this.taille = taille;
+        
+        this.taille = controller.getDifficultePartieFromView();
         this.setBackground(Color.BLACK);
-        this.setLayout(new GridLayout(taille, taille));
+        
 
-        Cases=createCaseArray(this);
-        for (Case obj : Cases)
-        {
-            System.out.println(obj);
-            System.out.println(obj.valeur);
-        }
-        this.addCasesToBoard();
-        dessinerCases(getGraphics());
+        this.setLayout(new GridLayout(taille, taille));
+        Cases = createCaseArray();
+        
+       
+        addCasesToBoard();
+
+        
     }
 
-    public ArrayList<Case> createCaseArray(dmqhBoard b)
+    public ArrayList<com.ares.View.assets.Case> createCaseArray()
     {
-        for (int i = 0; i < b.taille; i++)
+        Partie partie=controller.getPartie();
+        for (int i = 0; i < this.taille; i++)
         {
-            for (int j = 0; j < b.taille; j++)
+            for (int j = 0; j < this.taille; j++)
             {
-                Case caseObj = new Case(300, 2, new java.awt.Point(i , j ), Color.WHITE);
-                Cases.add(caseObj);
+            
+                
+                com.ares.View.assets.Case c = new Case(300,partie.getPlateau().getTableau()[j][i].getNombre(),new Point(i,j),partie.getPlateau().getTableau()[i][j].getCouleur());
+                Cases.add(c);
             }
         }
         return Cases;
@@ -78,6 +84,14 @@ public class dmqhBoard extends JPanel
     public int getTaille()
     {
         return taille;
+    }
+
+    public void updateBoard()
+    {
+        this.Cases = createCaseArray();
+        addCasesToBoard();
+        this.revalidate();
+        this.dessinerCases(getGraphics());
     }
 
 

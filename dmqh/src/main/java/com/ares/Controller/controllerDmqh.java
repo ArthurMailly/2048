@@ -9,6 +9,7 @@ import com.ares.Model.Case;
 public class controllerDmqh {
     private gameFrame gameFrame;
     private static controllerDmqh instance;
+    private int difficultePartie;
 
     private controllerDmqh() {
 
@@ -21,15 +22,38 @@ public class controllerDmqh {
         return instance;
     }
 
-    public void update_tableau_case() {
-        Partie.getInstance().showPlateau();
+    public Partie getPartie() {
+        return Partie.getInstance();
     }
+
 
     // public void AfficherPlateau
 
-    public int getSize(){
-        return gameFrame.taille;
+    public int getSizeGameFrame(){
+        return difficultePartie;
     }
+    public void setDifficultePartie(int difficulte){
+        Partie.getInstance().setDifficulte(difficulte);
+    }
+    public void getDifficultePartie(){
+        Partie.getInstance().getDifficulte();
+    }
+    public int getDifficultePartieFromView(){
+        return difficultePartie;
+    }
+    public void setDifficultePartieFromView(int difficulte){
+        difficultePartie = difficulte;
+    }
+    public void updateGameFrame(){
+        gameFrame.update();
+    }
+    public void setGameFrame(gameFrame gameFrame){
+        this.gameFrame = gameFrame;
+    }
+    public gameFrame getGameFrame(){
+        return gameFrame;
+    }
+
 
     
 }

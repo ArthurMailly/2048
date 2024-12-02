@@ -6,23 +6,21 @@ import com.ares.Controller.controllerDmqh;
 public class Partie
 {
     public static Partie instance;
-    
-    
+    public static controllerDmqh controller = controllerDmqh.getInstance();
     private Plateau plateau;
-    private int cote_x;
-    private int cote_y;
+    private int cote;
+    private int difficulte=2;
 
-    public Partie(int difficulte)
+    public Partie()
     {
-        this.cote_x = difficulte;
-        this.cote_y = difficulte;
-        this.plateau = new Plateau(cote_x, cote_y);
+        this.cote = controller.getDifficultePartieFromView();
+        this.plateau = new Plateau(cote, cote);
     }
     public static Partie getInstance()
     {
         if (instance == null)
         {
-            instance = new Partie(4);
+            instance = new Partie();
         }
         return instance;
     }
@@ -49,7 +47,7 @@ public class Partie
 
     public Boolean PeutEncoreJouer()
     {
-        Plateau plateau2 = new Plateau(4, 4);
+        Plateau plateau2 = new Plateau(cote, cote);
         plateau2.copyPlateau(plateau);
         if (plateau2.DeplacementGauche() || plateau2.DeplacementDroite() || plateau2.DeplacementHaut() || plateau2.DeplacementBas())
         {
@@ -61,9 +59,9 @@ public class Partie
     public Boolean VerificationGagner()
     {
 
-        for(int i = 0; i < this.cote_x; i++)
+        for(int i = 0; i < this.cote; i++)
         {
-            for (int j = 0; j < this.cote_y; j++)
+            for (int j = 0; j < this.cote; j++)
             {
                 if (this.plateau.getCase(i,j).getNombre() == 2048) { return true;}
             }
@@ -91,9 +89,13 @@ public class Partie
                 case "H" -> DeplacementHaut();
                 case "B" -> DeplacementBas();
             }
+            
+            
 
 
         }
     }
-
+    public void setDifficulte(int difficulte) {this.cote = cote;}
+    public int getDifficulte() {return this.cote;}
+    
 }

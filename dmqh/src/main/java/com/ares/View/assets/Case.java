@@ -33,6 +33,14 @@ public class Case extends PanelObjetGraphique {
         this.setLayout(new BorderLayout());
         switch(valeur)
         {
+            case 0 :
+                try {
+                    img = ImageIO.read(new File("C:\\Users\\sfarf\\Bureau\\Repos_Git\\Java_2048\\2048\\dmqh\\src\\main\\resources\\0 Tile.png"));
+                    picLabel = new JLabel(new ImageIcon(img));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                break;
             case 2 : 
                 try {
                     img = ImageIO.read(new File("C:\\Users\\sfarf\\Bureau\\Repos_Git\\Java_2048\\2048\\dmqh\\src\\main\\resources\\2 Tile.png"));

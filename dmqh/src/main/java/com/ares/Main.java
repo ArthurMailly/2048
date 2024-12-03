@@ -1,12 +1,13 @@
 package com.ares;
 
-import com.ares.View.gameFrame;
+import com.ares.View.MainMenu;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        new gameFrame(4);
+        MainMenu menu = new MainMenu();
+        menu.setVisible(true);
 
 
 

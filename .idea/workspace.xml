@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f749c846-f136-4b34-b57b-2a5a2a9ac519" name="Changes" comment="" />
+    <list default="true" id="f749c846-f136-4b34-b57b-2a5a2a9ac519" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/dmqh/src/main/java/com/ares/View/OptionMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dmqh/src/main/java/com/ares/View/RulesMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dmqh/src/main/java/com/ares/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/dmqh/src/main/java/com/ares/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dmqh/src/main/java/com/ares/View/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/dmqh/src/main/java/com/ares/View/MainMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dmqh/src/main/java/com/ares/View/assets/Case.java" beforeDir="false" afterPath="$PROJECT_DIR$/dmqh/src/main/java/com/ares/View/assets/Case.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dmqh/target/classes/com/ares/Controller/controllerDmqh.class" beforeDir="false" afterPath="$PROJECT_DIR$/dmqh/target/classes/com/ares/Controller/controllerDmqh.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dmqh/target/classes/com/ares/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/dmqh/target/classes/com/ares/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dmqh/target/classes/com/ares/Model/Case.class" beforeDir="false" afterPath="$PROJECT_DIR$/dmqh/target/classes/com/ares/Model/Case.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dmqh/target/classes/com/ares/Model/Partie.class" beforeDir="false" afterPath="$PROJECT_DIR$/dmqh/target/classes/com/ares/Model/Partie.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dmqh/target/classes/com/ares/Model/Plateau.class" beforeDir="false" afterPath="$PROJECT_DIR$/dmqh/target/classes/com/ares/Model/Plateau.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dmqh/target/classes/com/ares/View/MainMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/dmqh/target/classes/com/ares/View/MainMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dmqh/target/classes/com/ares/View/assets/Case.class" beforeDir="false" afterPath="$PROJECT_DIR$/dmqh/target/classes/com/ares/View/assets/Case.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dmqh/target/classes/com/ares/View/assets/dmqhBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/dmqh/target/classes/com/ares/View/assets/dmqhBoard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dmqh/target/classes/com/ares/View/gameFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/dmqh/target/classes/com/ares/View/gameFrame.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,12 +38,27 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "Create-menu",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/arthu/Desktop/Projets/2048/dmqh"
+    "last_opened_file_path": "C:/Users/arthu/Desktop/Projets/2048"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="2048" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="2048" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

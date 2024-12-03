@@ -12,7 +12,7 @@ public class Main {
     public static void main(String[] args) {
         controllerDmqh controller = controllerDmqh.getInstance();
 
-        int userInput=4;
+        int userInput=6;
         controller.setDifficultePartieFromView(userInput);
         controller.setGameFrame(new gameFrame());
 

@@ -1,67 +1,79 @@
 package com.ares.View;
 
-import java.awt.BorderLayout;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class MainMenu extends JFrame {
     JButton playButton;
     JButton optionsButton;
-    JButton HowToPlay;
-    JButton LienRapport;
-    JPanel PlayPanel;
-    JPanel OptionsPanel;
-    JPanel ContactPanel;
-    JPanel LogoPanel;
-    BufferedImage Logo;
+    JButton rulesButton;
+    JButton quitButton;
+    JPanel contentPane;
+    JLabel title;
 
     public MainMenu() {
-        this.setTitle("2048!");
-        this.setSize(1000, 1000);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-        try {
-            Logo=ImageIO.read(new File("C:\\Users\\sfarf\\Bureau\\Repos_Git\\Java_2048\\2048\\dmqh\\src\\main\\resources\\Logo_dmqh.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        this.setIconImage(Logo);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBounds(500,100,500, 500);
+        setTitle("2048!");
 
-        playButton = new JButton("Play");
+        contentPane = new JPanel();
+        contentPane.setLayout(null);
+        setContentPane(contentPane);
+
+        title = new JLabel("2048", JLabel.CENTER);
+        title.setBounds(120, 100, 250, 50);
+        title.setFont(new Font("Verdana", Font.PLAIN, 30));
+        contentPane.add(title);
+
+        playButton = new JButton("Jouer");
+        playButton.setBounds(200,200,100,45);
+        contentPane.add(playButton);
+
         optionsButton = new JButton("Options");
-        LienRapport = new JButton("Lien Rapport");
-        HowToPlay = new JButton("How to play");
-        JLabel picLabel = new JLabel(new ImageIcon(Logo));
+        optionsButton.setBounds(200,250,100,45);
+        contentPane.add(optionsButton);
+        optionsButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                pageVersOptions();
+            }
+        });
 
-        PlayPanel = new JPanel();
-        OptionsPanel = new JPanel();
-        ContactPanel = new JPanel();
-        LogoPanel = new JPanel();
+        rulesButton = new JButton("Règles");
+        rulesButton.setBounds(200,300,100,45);
+        contentPane.add(rulesButton);
+        rulesButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                pageVersRegles();
+            }
+        });
 
-        LogoPanel.add(picLabel, BorderLayout.NORTH);
-        PlayPanel.add(playButton, BorderLayout.CENTER);
-        OptionsPanel.add(optionsButton, BorderLayout.CENTER);
-        ContactPanel.add(LienRapport, BorderLayout.SOUTH);
-        ContactPanel.add(HowToPlay, BorderLayout.WEST);
+        quitButton = new JButton("Quitter");
+        quitButton.setBounds(200,350,100,45);
+        contentPane.add(quitButton);
+        quitButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                quitterApp();
+            }
+        });
 
-        
-        this.add(LogoPanel, BorderLayout.NORTH);
-        this.add(PlayPanel, BorderLayout.CENTER);
-        this.add(OptionsPanel, BorderLayout.CENTER);
-        this.add(ContactPanel, BorderLayout.SOUTH);
-
-        this.setVisible(true);
-
-        
-
-        
     }
 
+    public void pageVersRegles()
+    {
+        RulesMenu rules = new RulesMenu();
+        rules.setVisible(true);
+        this.dispose();
+    }
 
+    public void pageVersOptions()
+    {
+        OptionMenu options = new OptionMenu();
+        options.setVisible(true);
+        this.dispose();
+    }
 
-    
+    public void quitterApp() {System.exit(1);}
+
 }

@@ -1,57 +1,45 @@
 package com.ares.View;
 
-import java.awt.Font;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
-public class MainMenu extends JFrame {
+public class MainMenu extends JPanel {
     JButton playButton;
     JButton optionsButton;
     JButton rulesButton;
     JButton quitButton;
-    JPanel contentPane;
     JLabel title;
 
-    public MainMenu() {
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    public MainMenu(JPanel cardPanel) {
         setBounds(500,100,500, 500);
-        setTitle("2048!");
-
-        contentPane = new JPanel();
-        contentPane.setLayout(null);
-        setContentPane(contentPane);
+        CardLayout cl = (CardLayout) cardPanel.getLayout();
+        setLayout(null);
 
         title = new JLabel("2048", JLabel.CENTER);
         title.setBounds(120, 100, 250, 50);
         title.setFont(new Font("Verdana", Font.PLAIN, 30));
-        contentPane.add(title);
+        this.add(title);
 
         playButton = new JButton("Jouer");
         playButton.setBounds(200,200,100,45);
-        contentPane.add(playButton);
+        this.add(playButton);
+        playButton.addActionListener(event -> cl.show(cardPanel, "PlayMenu"));
 
         optionsButton = new JButton("Options");
         optionsButton.setBounds(200,250,100,45);
-        contentPane.add(optionsButton);
-        optionsButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                pageVersOptions();
-            }
-        });
+        this.add(optionsButton);
+        optionsButton.addActionListener(event -> cl.show(cardPanel, "OptionMenu"));
 
         rulesButton = new JButton("Règles");
         rulesButton.setBounds(200,300,100,45);
-        contentPane.add(rulesButton);
-        rulesButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                pageVersRegles();
-            }
-        });
+        this.add(rulesButton);
+        rulesButton.addActionListener(event -> cl.show(cardPanel, "RulesMenu"));
 
         quitButton = new JButton("Quitter");
         quitButton.setBounds(200,350,100,45);
-        contentPane.add(quitButton);
+        this.add(quitButton);
         quitButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 quitterApp();
@@ -59,21 +47,6 @@ public class MainMenu extends JFrame {
         });
 
     }
-
-    public void pageVersRegles()
-    {
-        RulesMenu rules = new RulesMenu();
-        rules.setVisible(true);
-        this.dispose();
-    }
-
-    public void pageVersOptions()
-    {
-        OptionMenu options = new OptionMenu();
-        options.setVisible(true);
-        this.dispose();
-    }
-
     public void quitterApp() {System.exit(1);}
 
 }

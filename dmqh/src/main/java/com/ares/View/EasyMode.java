@@ -2,28 +2,26 @@ package com.ares.View;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class OptionMenu extends JPanel
+public class EasyMode extends JPanel
 {
     JButton retourMenuButton;
-    JLabel title;
+    JLabel label;
 
-    public OptionMenu(JPanel cardPanel) {
+    public EasyMode(JPanel cardPanel)
+    {
         setBounds(500, 100, 500, 500);
         CardLayout cl = (CardLayout) cardPanel.getLayout();
         setLayout(null);
 
-        title = new JLabel("Options", JLabel.CENTER);
-        title.setBounds(120, 100, 250, 50);
-        title.setFont(new Font("Verdana", Font.PLAIN, 20));
-        this.add(title);
+        label = new JLabel("Le easy mode, c'est un mode mais easy", JLabel.LEFT);
+        label.setBounds(120, 100, 250, 50);
+        label.setFont(new Font("Verdana", Font.PLAIN, 10));
+        this.add(label);
 
         retourMenuButton = new JButton("Retour");
         retourMenuButton.setBounds(200, 400, 100, 45);
         this.add(retourMenuButton);
         retourMenuButton.addActionListener(event -> cl.show(cardPanel, "MainMenu"));
     }
-
 }

@@ -1,15 +1,12 @@
 package com.ares;
 
-import com.ares.View.MainMenu;
+import com.ares.View.Fenetre;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        MainMenu menu = new MainMenu();
-        menu.setVisible(true);
-
-
+        Fenetre menu = new Fenetre();
 
     }
 }

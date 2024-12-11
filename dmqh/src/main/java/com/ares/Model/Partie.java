@@ -5,13 +5,13 @@ import com.ares.Controller.controllerDmqh;
 
 public class Partie
 {
-    public static Partie instance;
+    public static Partie instance=null;
     public static controllerDmqh controller = controllerDmqh.getInstance();
     private Plateau plateau;
     private int cote;
     private int difficulte=2;
 
-    public Partie()
+    private Partie()
     {
         this.cote = controller.getDifficultePartieFromView();
         this.plateau = new Plateau(cote, cote);

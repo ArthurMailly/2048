@@ -9,6 +9,7 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.awt.Graphics;
 import java.awt.Color;
+import java.awt.Container;
 
 import javax.swing.*;
 import com.ares.Model.Partie;
@@ -43,18 +44,7 @@ public class dmqhBoard extends JPanel
 
     public ArrayList<com.ares.View.assets.Case> createCaseArray()
     {
-        Partie partie=controller.getPartie();
-        for (int i = 0; i < this.taille; i++)
-        {
-            for (int j = 0; j < this.taille; j++)
-            {
-            
-                
-                com.ares.View.assets.Case c = new Case(300,partie.getPlateau().getTableau()[j][i].getNombre(),new Point(i,j),partie.getPlateau().getTableau()[i][j].getCouleur());
-                Cases.add(c);
-            }
-        }
-        return Cases;
+        return controller.getPlateauAsCase();
         
     }
 
@@ -87,22 +77,30 @@ public class dmqhBoard extends JPanel
     }
 
     public void updateBoard()
-    {
-        this.Cases = createCaseArray();
-        addCasesToBoard();
-        this.revalidate();
-        this.dessinerCases(getGraphics());
+    { 
+        this.removeAll(); // Clear the board
+        Cases = controller.getPlateauAsCase();
+        for (Case obj : Cases)
+        {
+            obj.removeAll();
+            obj.addLabels();
+            this.add(obj); // Add the updated cases to the board
+        } 
+        this.revalidate(); // Revalidate the board to apply changes
+        this.repaint(); // Repaint the board to reflect changes
     }
 
+    @Override
+    public void paintComponent(Graphics g)
+    {
+        super.paintComponent(g);
+        dessinerCases(g);
+    }
+    
+    
 
-    // @Override
-    // protected void paintComponent(Graphics g)
-    // {
-    //     super.paintComponent(g);
-    //     this.setBackground(Color.WHITE);
-    //     g.setColor(Color.WHITE);
-    //     g.fillRect(0, 0, 100, 100);
-    // }
+
+    
     
 	
 }

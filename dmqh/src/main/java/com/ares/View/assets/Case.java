@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -12,13 +13,14 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-public class Case extends PanelObjetGraphique {
+public class Case extends JPanel {
     public int cote;
     public int valeur;
     public Color couleur;
     public Point p;
     public BufferedImage img;
     public JLabel picLabel;
+    
 
 
 
@@ -31,6 +33,11 @@ public class Case extends PanelObjetGraphique {
         this.img = null;
         this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         this.setLayout(new BorderLayout());
+        addLabels();
+        
+    }
+    public void addLabels()
+    {
         switch(valeur)
         {
             case 0 :
@@ -131,17 +138,23 @@ public class Case extends PanelObjetGraphique {
                 break;
             default :
         }
+        
         this.add(picLabel, BorderLayout.CENTER);
+
     }
 
+    public void updateCase()
+    {
+        
+
+    }
     @Override
     public void paintComponent(Graphics g)
     {
         super.paintComponent(g);
-        g.setColor(couleur);
-        g.fillRect(p.x, p.y, cote, cote);
+        // g.setColor(couleur);
+        // g.fillRect(p.x, p.y, cote, cote);
     }
-
     
 
 

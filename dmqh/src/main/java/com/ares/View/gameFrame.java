@@ -6,6 +6,8 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.image.BufferedImage;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 
@@ -18,6 +20,7 @@ import com.ares.View.assets.dmqhBoard;
 
 public class gameFrame extends JFrame {
 
+    public actionController actionController;
     public JPanel mainPanel;
     public dmqhBoard dmqhBoard;
     public JPanel scorePanel;
@@ -38,6 +41,9 @@ public class gameFrame extends JFrame {
         mainPanel = new JPanel(new BorderLayout());
         scorePanel = new JPanel();
 
+        actionController = new actionController();
+        this.addKeyListener(actionController);
+
         
 
         
@@ -55,12 +61,11 @@ public class gameFrame extends JFrame {
         
 
     }
+
+    
     public void update()
     {
         dmqhBoard.updateBoard();
-
-
-
         
     }
 

@@ -77,6 +77,10 @@ public class Case {
 
     public boolean getDeja_fusionne() {return this.deja_fusionne;}
 
+    public Color getCouleur(){
+        return this.couleur;
+    }
+
     public void copyCase(Case case2)
     {
         this.couleur = case2.couleur;

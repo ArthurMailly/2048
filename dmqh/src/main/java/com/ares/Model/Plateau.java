@@ -268,6 +268,11 @@ public class Plateau
         return this.tableau_case[i][j];
     }
 
+    public Case[][] getTableau()
+    {
+        return this.tableau_case;
+    }
+
     public void copyPlateau(Plateau plateau2)
     {
         this.score = plateau2.score;

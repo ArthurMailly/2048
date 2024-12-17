@@ -1,27 +1,28 @@
 package com.ares.Model;
 import java.util.Scanner;
 
+import com.ares.Controller.controllerDmqh;
+
 public class Partie
 {
+    public static Partie instance=null;
+    public static controllerDmqh controller = controllerDmqh.getInstance();
     private Plateau plateau;
-    private int cote_x;
-    private int cote_y;
+    private int cote;
+    private int difficulte=2;
 
-    public Partie(String difficulte)
+    private Partie()
     {
-        switch(difficulte)
+        this.cote = controller.getDifficultePartieFromView();
+        this.plateau = new Plateau(cote, cote);
+    }
+    public static Partie getInstance()
+    {
+        if (instance == null)
         {
-            case "Standard":
-                cote_x = 4;
-                cote_y = 4;
-                break;
-            case "Grand":
-                cote_x = 8;
-                cote_y = 8;
-                break;
+            instance = new Partie();
         }
-
-        this.plateau = new Plateau(cote_x, cote_y);
+        return instance;
     }
 
     public Plateau getPlateau() {return plateau;}
@@ -42,9 +43,11 @@ public class Partie
 
     public void DeplacementBas() {this.plateau.DeplacementBas();}
 
+    public Case[][] getTableau() {return this.plateau.getTableau();}   
+
     public Boolean PeutEncoreJouer()
     {
-        Plateau plateau2 = new Plateau(4, 4);
+        Plateau plateau2 = new Plateau(cote, cote);
         plateau2.copyPlateau(plateau);
         if (plateau2.DeplacementGauche() || plateau2.DeplacementDroite() || plateau2.DeplacementHaut() || plateau2.DeplacementBas())
         {
@@ -56,9 +59,9 @@ public class Partie
     public Boolean VerificationGagner()
     {
 
-        for(int i = 0; i < this.cote_x; i++)
+        for(int i = 0; i < this.cote; i++)
         {
-            for (int j = 0; j < this.cote_y; j++)
+            for (int j = 0; j < this.cote; j++)
             {
                 if (this.plateau.getCase(i,j).getNombre() == 2048) { return true;}
             }
@@ -86,9 +89,14 @@ public class Partie
                 case "H" -> DeplacementHaut();
                 case "B" -> DeplacementBas();
             }
+            
+            
 
 
         }
     }
-
+    public void setDifficulte(int difficulte) {this.cote = cote;}
+    public int getDifficulte() {return this.cote;}
+    public void restart() {this.plateau = new Plateau(cote, cote);}
+    
 }

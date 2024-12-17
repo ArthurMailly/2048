@@ -42,7 +42,7 @@ public class Case extends JPanel {
         {
             case 0 :
                 try {
-                    img = ImageIO.read(new File("dmqh/src/main/resources/0 Tile.png"));
+                    img = ImageIO.read(new File("src/main/resources/0 Tile.png"));
                     picLabel = new JLabel(new ImageIcon(img));
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -50,7 +50,7 @@ public class Case extends JPanel {
                 break;
             case 2 : 
                 try {
-                    img = ImageIO.read(new File("dmqh\\src\\main\\resources\\2 Tile.png"));
+                    img = ImageIO.read(new File("src/main/resources/2 Tile.png"));
                     picLabel = new JLabel(new ImageIcon(img));
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -58,7 +58,7 @@ public class Case extends JPanel {
                 break;
             case 4 :
                 try {
-                    img = ImageIO.read(new File("dmqh\\src\\main\\resources\\4 Tile.png"));
+                    img = ImageIO.read(new File("src/main/resources/4 Tile.png"));
                     picLabel = new JLabel(new ImageIcon(img));
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -66,7 +66,7 @@ public class Case extends JPanel {
                 break;
             case 8 :
                 try {
-                    img = ImageIO.read(new File("dmqh\\src\\main\\resources\\8 Tile.png"));
+                    img = ImageIO.read(new File("src/main/resources/8 Tile.png"));
                     picLabel = new JLabel(new ImageIcon(img));
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -74,7 +74,7 @@ public class Case extends JPanel {
                 break;
             case 16 :
                 try {
-                    img = ImageIO.read(new File("dmqh\\src\\main\\resources\\16 Tile.png"));
+                    img = ImageIO.read(new File("src/main/resources/16 Tile.png"));
                     picLabel = new JLabel(new ImageIcon(img));
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -82,7 +82,7 @@ public class Case extends JPanel {
                 break;
             case 32 :
                 try {
-                    img = ImageIO.read(new File("dmqh\\src\\main\\resources\\32 Tile.png"));
+                    img = ImageIO.read(new File("src/main/resources/32 Tile.png"));
                     picLabel = new JLabel(new ImageIcon(img));
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -90,7 +90,7 @@ public class Case extends JPanel {
                 break;
             case 64 :
                 try {
-                    img = ImageIO.read(new File("dmqh\\src\\main\\resources\\64 Tile.png"));
+                    img = ImageIO.read(new File("src/main/resources/64 Tile.png"));
                     picLabel = new JLabel(new ImageIcon(img));
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -98,7 +98,7 @@ public class Case extends JPanel {
                 break;
             case 128 :
                 try {
-                    img = ImageIO.read(new File("dmqh\\src\\main\\resources\\128 Tile.png"));
+                    img = ImageIO.read(new File("src/main/resources/128 Tile.png"));
                     picLabel = new JLabel(new ImageIcon(img));
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -106,7 +106,7 @@ public class Case extends JPanel {
                 break;
             case 256 :
                 try {
-                    img = ImageIO.read(new File("dmqh\\src\\main\\resources\\256 Tile.png"));
+                    img = ImageIO.read(new File("src/main/resources/256 Tile.png"));
                     picLabel = new JLabel(new ImageIcon(img));
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -114,7 +114,7 @@ public class Case extends JPanel {
                 break;  
             case 512 :
                 try {
-                    img = ImageIO.read(new File("dmqh\\src\\main\\resources\\512 Tile.png"));
+                    img = ImageIO.read(new File("src/main/resources/512 Tile.png"));
                     picLabel = new JLabel(new ImageIcon(img));
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -122,7 +122,7 @@ public class Case extends JPanel {
                 break;
             case 1024 :
                 try {
-                    img = ImageIO.read(new File("dmqh\\src\\main\\resources\\1024 Tile.png"));
+                    img = ImageIO.read(new File("src/main/resources/1024 Tile.png"));
                     picLabel = new JLabel(new ImageIcon(img));
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -130,7 +130,7 @@ public class Case extends JPanel {
                 break;
             case 2048 :
                 try {
-                    img = ImageIO.read(new File("dmqh\\src\\main\\resources\\2048 Tile.png"));
+                    img = ImageIO.read(new File("src/main/resources/2048 Tile.png"));
                     picLabel = new JLabel(new ImageIcon(img));
                 } catch (IOException e) {
                     e.printStackTrace();

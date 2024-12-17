@@ -83,7 +83,11 @@ public class gameFrame extends JFrame {
         controllerDmqh controller= controllerDmqh.getInstance();
         if (controller.getPartie().getPartie_finie())
         {
+            dmqhBoard.updateBoard();
+            updateScore();
             System.out.println("C'est fini gros");
+            new EndGamePage();
+            this.dispose();
         }
         else
         {

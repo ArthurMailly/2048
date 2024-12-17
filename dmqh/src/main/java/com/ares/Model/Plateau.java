@@ -66,185 +66,203 @@ public class Plateau
 
     }
 
-    public Boolean DeplacementGauche() // True si le déplacement a été fait
-    {
+    public Boolean DeplacementGauche() {
         Boolean deplacement_fait = false;
 
-        for (int j = 0; j < this.cote_y; j++)
-        {
-            for (int i = 1; i < this.cote_x; i++)
-            {
+        // Réinitialise l'état de fusion pour toutes les cases au début
+        ToutesCasesPasFusionnees();
 
+        for (int j = 0; j < this.cote_y; j++) {
+            for (int i = 1; i < this.cote_x; i++) { // On commence à la deuxième colonne
                 int new_I = i;
 
-                while ((new_I > 0) && (this.tableau_case[new_I-1][j].getNombre() == 0))
-                {
-                    if (this.tableau_case[new_I][j].getNombre() != 0)
-                    {
+                // Déplacement des cases vers la gauche
+                while (new_I > 0 && this.tableau_case[new_I - 1][j].getNombre() == 0) {
+                    if (this.tableau_case[new_I][j].getNombre() != 0) {
                         deplacement_fait = true;
                     }
-                    this.tableau_case[new_I-1][j] = this.tableau_case[new_I][j];
-                    CreerCase(new_I,j,true);
 
-                    new_I = new_I - 1;
-
+                    // Déplace la case
+                    this.tableau_case[new_I - 1][j] = this.tableau_case[new_I][j];
+                    CreerCase(new_I, j, true); // Vide l'ancienne position
+                    new_I--;
                 }
 
-                if ((new_I > 0) && (!this.tableau_case[new_I-1][j].getDeja_fusionne()) && (this.tableau_case[new_I-1][j].getNombre() == this.tableau_case[new_I][j].getNombre()))
-                {
+                // Vérifie si une fusion est possible
+                if (new_I > 0 &&
+                        !this.tableau_case[new_I - 1][j].getDeja_fusionne() &&
+                        this.tableau_case[new_I - 1][j].getNombre() == this.tableau_case[new_I][j].getNombre()) {
+
+                    // Fusionne les cases
                     deplacement_fait = true;
-                    int num_case = this.tableau_case[new_I-1][j].getNombre() * 2;
-                    CreerCaseNum(new_I-1, j, num_case);
-                    CreerCase(new_I, j, true);
+                    int num_case = this.tableau_case[new_I - 1][j].getNombre() * 2;
+                    CreerCaseNum(new_I - 1, j, num_case); // Crée la case fusionnée
+                    CreerCase(new_I, j, true); // Vide l'ancienne case
                     score += num_case;
-                    this.tableau_case[new_I-1][j].setDeja_fusionne(true);
-                }
 
+                    // Marque la case comme fusionnée
+                    this.tableau_case[new_I - 1][j].setDeja_fusionne(true);
+                }
             }
         }
 
-        if (deplacement_fait)
-        {
+        // Place une nouvelle case aléatoire si un déplacement a été effectué
+        if (deplacement_fait) {
             PlaceCaseAleatoire();
-            ToutesCasesPasFusionnees();
         }
-
+        System.out.println("Deplacement fait gauche: "+deplacement_fait);
         return deplacement_fait;
     }
 
-    public Boolean DeplacementDroite()
-    {
+    public Boolean DeplacementDroite() {
         Boolean deplacement_fait = false;
 
-        for (int j = 0; j < this.cote_y; j++)
-        {
-            for (int i = this.cote_x - 1; i >= 0; i--)
-            {
+        // Réinitialise l'état de fusion pour toutes les cases au début
+        ToutesCasesPasFusionnees();
 
+        for (int j = 0; j < this.cote_y; j++) {
+            for (int i = this.cote_x - 2; i >= 0; i--) { // On commence à l'avant-dernière colonne
                 int new_I = i;
 
-                while ((new_I < this.cote_x-1) && (this.tableau_case[new_I+1][j].getNombre() == 0))
-                {
-                    if (this.tableau_case[new_I][j].getNombre() != 0)
-                    {
+                // Déplacement des cases vers la droite
+                while (new_I < this.cote_x - 1 && this.tableau_case[new_I + 1][j].getNombre() == 0) {
+                    if (this.tableau_case[new_I][j].getNombre() != 0) {
                         deplacement_fait = true;
                     }
-                    this.tableau_case[new_I+1][j] = this.tableau_case[new_I][j];
-                    CreerCase(new_I,j,true);
 
-                    new_I = new_I + 1;
+                    // Déplace la case
+                    this.tableau_case[new_I + 1][j] = this.tableau_case[new_I][j];
+                    CreerCase(new_I, j, true); // Vide l'ancienne position
+                    new_I++;
                 }
 
-                if ((new_I < this.cote_x-1) && (!this.tableau_case[new_I+1][j].getDeja_fusionne()) && (this.tableau_case[new_I+1][j].getNombre() == this.tableau_case[new_I][j].getNombre()))
-                {
+                // Vérifie si une fusion est possible
+                if (new_I < this.cote_x - 1 &&
+                        !this.tableau_case[new_I + 1][j].getDeja_fusionne() &&
+                        this.tableau_case[new_I + 1][j].getNombre() == this.tableau_case[new_I][j].getNombre()) {
+
+                    // Fusionne les cases
                     deplacement_fait = true;
-                    int num_case = this.tableau_case[new_I+1][j].getNombre() * 2;
-                    CreerCaseNum(new_I+1, j, num_case);
-                    CreerCase(new_I, j, true);
+                    int num_case = this.tableau_case[new_I + 1][j].getNombre() * 2;
+                    CreerCaseNum(new_I + 1, j, num_case); // Crée la case fusionnée
+                    CreerCase(new_I, j, true); // Vide l'ancienne case
                     score += num_case;
-                    this.tableau_case[new_I+1][j].setDeja_fusionne(true);
-                }
 
+                    // Marque la case comme fusionnée
+                    this.tableau_case[new_I + 1][j].setDeja_fusionne(true);
+                }
             }
         }
-        if (deplacement_fait)
-        {
+
+        // Place une nouvelle case aléatoire si un déplacement a été effectué
+        if (deplacement_fait) {
             PlaceCaseAleatoire();
-            ToutesCasesPasFusionnees();
         }
+
+        System.out.println("Deplacement fait droite: "+deplacement_fait);
 
         return deplacement_fait;
     }
 
-    public Boolean DeplacementHaut()
-    {
+    public Boolean DeplacementHaut() {
         Boolean deplacement_fait = false;
 
-        for (int i = 0; i < this.cote_x; i++)
-        {
-            for (int j = 1; j < this.cote_y; j++)
-            {
+        // Réinitialise l'état de fusion pour toutes les cases au début
+        ToutesCasesPasFusionnees();
 
+        for (int i = 0; i < this.cote_x; i++) {
+            for (int j = 1; j < this.cote_y; j++) { // On commence à la deuxième ligne
                 int new_J = j;
 
-                while ((new_J > 0) && (this.tableau_case[i][new_J-1].getNombre() == 0))
-                {
-                    if (this.tableau_case[i][new_J].getNombre() != 0)
-                    {
+                // Déplacement des cases vers le haut
+                while (new_J > 0 && this.tableau_case[i][new_J - 1].getNombre() == 0) {
+                    if (this.tableau_case[i][new_J].getNombre() != 0) {
                         deplacement_fait = true;
                     }
 
-                    this.tableau_case[i][new_J-1] = this.tableau_case[i][new_J];
-                    CreerCase(i,new_J,true);
-
-                    new_J = new_J - 1;
+                    // Déplace la case
+                    this.tableau_case[i][new_J - 1] = this.tableau_case[i][new_J];
+                    CreerCase(i, new_J, true); // Vide l'ancienne position
+                    new_J--;
                 }
 
-                if ((new_J > 0) && (!this.tableau_case[i][new_J-1].getDeja_fusionne()) && (this.tableau_case[i][new_J-1].getNombre() == this.tableau_case[i][new_J].getNombre()))
-                {
+                // Vérifie si une fusion est possible
+                if (new_J > 0 &&
+                        !this.tableau_case[i][new_J - 1].getDeja_fusionne() &&
+                        this.tableau_case[i][new_J - 1].getNombre() == this.tableau_case[i][new_J].getNombre()) {
+
+                    // Fusionne les cases
                     deplacement_fait = true;
-                    int num_case = this.tableau_case[i][new_J-1].getNombre() * 2;
-                    CreerCaseNum(i, new_J-1, num_case);
-                    CreerCase(i, new_J, true);
+                    int num_case = this.tableau_case[i][new_J - 1].getNombre() * 2;
+                    CreerCaseNum(i, new_J - 1, num_case); // Crée la case fusionnée
+                    CreerCase(i, new_J, true); // Vide l'ancienne case
                     score += num_case;
-                    this.tableau_case[i][new_J-1].setDeja_fusionne(true);
-                }
 
+                    // Marque la case comme fusionnée
+                    this.tableau_case[i][new_J - 1].setDeja_fusionne(true);
+                }
             }
         }
-        if (deplacement_fait)
-        {
+
+        // Place une nouvelle case aléatoire si un déplacement a été effectué
+        if (deplacement_fait) {
             PlaceCaseAleatoire();
-            ToutesCasesPasFusionnees();
         }
 
+        System.out.println("Deplacement fait haut: "+deplacement_fait);
         return deplacement_fait;
     }
 
-    public Boolean DeplacementBas()
-    {
+
+    public Boolean DeplacementBas() {
         Boolean deplacement_fait = false;
 
-        for (int i = 0; i < this.cote_x; i++)
-        {
-            for (int j = this.cote_y - 1; j >= 0; j--)
-            {
+        // Réinitialise l'état de fusion pour toutes les cases au début
+        ToutesCasesPasFusionnees();
 
+        for (int i = 0; i < this.cote_x; i++) {
+            for (int j = this.cote_y - 2; j >= 0; j--) { // On part de l'avant-dernière ligne
                 int new_J = j;
 
-                while ((new_J < this.cote_y-1) && (this.tableau_case[i][new_J+1].getNombre() == 0))
-                {
-                    if (this.tableau_case[i][new_J].getNombre() != 0)
-                    {
+                // Déplacement des cases vers le bas
+                while (new_J < this.cote_y - 1 && this.tableau_case[i][new_J + 1].getNombre() == 0) {
+                    if (this.tableau_case[i][new_J].getNombre() != 0) {
                         deplacement_fait = true;
                     }
 
-                    this.tableau_case[i][new_J+1] = this.tableau_case[i][new_J];
-                    CreerCase(i,new_J,true);
-
-                    new_J = new_J + 1;
+                    // Déplace la case
+                    this.tableau_case[i][new_J + 1] = this.tableau_case[i][new_J];
+                    CreerCase(i, new_J, true); // Vide l'ancienne position
+                    new_J++;
                 }
 
-                if ((new_J < this.cote_y-1) && (!this.tableau_case[i][new_J+1].getDeja_fusionne()) && (this.tableau_case[i][new_J+1].getNombre() == this.tableau_case[i][new_J].getNombre()))
-                {
+                // Vérifie si une fusion est possible
+                if (new_J < this.cote_y - 1 &&
+                        !this.tableau_case[i][new_J + 1].getDeja_fusionne() &&
+                        this.tableau_case[i][new_J + 1].getNombre() == this.tableau_case[i][new_J].getNombre()) {
+
+                    // Fusionne les cases
                     deplacement_fait = true;
-                    int num_case = this.tableau_case[i][new_J+1].getNombre() * 2;
-                    CreerCaseNum(i, new_J+1, num_case);
-                    CreerCase(i, new_J, true);
+                    int num_case = this.tableau_case[i][new_J + 1].getNombre() * 2;
+                    CreerCaseNum(i, new_J + 1, num_case); // Crée la case fusionnée
+                    CreerCase(i, new_J, true); // Vide l'ancienne case
                     score += num_case;
-                    this.tableau_case[i][new_J+1].setDeja_fusionne(true);
-                }
 
+                    // Marque la case comme fusionnée
+                    this.tableau_case[i][new_J + 1].setDeja_fusionne(true);
+                }
             }
         }
-        if (deplacement_fait)
-        {
+
+        // Place une nouvelle case aléatoire si un déplacement a été effectué
+        if (deplacement_fait) {
             PlaceCaseAleatoire();
-            ToutesCasesPasFusionnees();
         }
 
+        System.out.println("Deplacement fait bas: "+deplacement_fait);
         return deplacement_fait;
     }
+
 
     public void ToutesCasesPasFusionnees()
     {

@@ -2,17 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f749c846-f136-4b34-b57b-2a5a2a9ac519" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/dmqh/src/main/java/com/ares/View/OptionMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dmqh/src/main/java/com/ares/View/RulesMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dmqh/src/main/java/com/ares/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/dmqh/src/main/java/com/ares/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dmqh/src/main/java/com/ares/View/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/dmqh/src/main/java/com/ares/View/MainMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dmqh/src/main/java/com/ares/View/assets/Case.java" beforeDir="false" afterPath="$PROJECT_DIR$/dmqh/src/main/java/com/ares/View/assets/Case.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dmqh/target/classes/com/ares/Controller/controllerDmqh.class" beforeDir="false" afterPath="$PROJECT_DIR$/dmqh/target/classes/com/ares/Controller/controllerDmqh.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dmqh/target/classes/com/ares/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/dmqh/target/classes/com/ares/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dmqh/target/classes/com/ares/Model/Case.class" beforeDir="false" afterPath="$PROJECT_DIR$/dmqh/target/classes/com/ares/Model/Case.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dmqh/target/classes/com/ares/Model/Partie.class" beforeDir="false" afterPath="$PROJECT_DIR$/dmqh/target/classes/com/ares/Model/Partie.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dmqh/target/classes/com/ares/Model/Plateau.class" beforeDir="false" afterPath="$PROJECT_DIR$/dmqh/target/classes/com/ares/Model/Plateau.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dmqh/target/classes/com/ares/View/MainMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/dmqh/target/classes/com/ares/View/MainMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dmqh/target/classes/com/ares/View/actionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/dmqh/target/classes/com/ares/View/actionController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dmqh/target/classes/com/ares/View/assets/Case.class" beforeDir="false" afterPath="$PROJECT_DIR$/dmqh/target/classes/com/ares/View/assets/Case.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dmqh/target/classes/com/ares/View/assets/dmqhBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/dmqh/target/classes/com/ares/View/assets/dmqhBoard.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dmqh/target/classes/com/ares/View/gameFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/dmqh/target/classes/com/ares/View/gameFrame.class" afterDir="false" />
@@ -41,7 +36,7 @@
     "git-widget-placeholder": "Create-menu",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/arthu/Desktop/Projets/2048"
+    "last_opened_file_path": "C:/Users/arthu/Desktop/Projets/2048/dmqh"
   }
 }]]></component>
   <component name="RunManager">

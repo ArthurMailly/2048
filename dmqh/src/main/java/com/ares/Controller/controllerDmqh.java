@@ -51,9 +51,9 @@ public class controllerDmqh {
     public void setDifficultePartieFromView(int difficulte){
         difficultePartie = difficulte;
     }
-    public void updateGameFrame(){
-        gameFrame.update();
-    }
+    //public void updateGameFrame(){
+    //    gameFrame.update();
+    //}
     public void setGameFrame(gameFrame gameFrame){
         this.gameFrame = gameFrame;
     }

@@ -10,6 +10,7 @@ public class Partie
     private Plateau plateau;
     private int cote;
     private int difficulte=2;
+    private static Boolean partie_finie = false;
 
     private Partie()
     {
@@ -53,8 +54,10 @@ public class Partie
         plateau2.copyPlateau(plateau);
         if (plateau2.DeplacementGauche() || plateau2.DeplacementDroite() || plateau2.DeplacementHaut() || plateau2.DeplacementBas())
         {
+            partie_finie = false;
             return true;
         }
+        partie_finie = true;
         return false;
     }
 
@@ -70,6 +73,12 @@ public class Partie
         }
 
         return false;
+    }
+
+    public Boolean getPartie_finie()
+    {
+        PeutEncoreJouer();
+        return partie_finie;
     }
 
     public void Jouer()

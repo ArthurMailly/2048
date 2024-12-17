@@ -47,6 +47,7 @@ public class actionController implements KeyListener
 //                default:
 //                    System.out.println("Key pressed: " + e.getKeyChar());
             }
+            System.out.println(controller.getPartie().getPartie_finie());
     }
 
     public void keyReleased(KeyEvent e) {

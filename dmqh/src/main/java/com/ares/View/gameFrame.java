@@ -16,6 +16,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import com.ares.Controller.controllerDmqh;
+import com.ares.Model.Partie;
 import com.ares.View.assets.dmqhBoard;
 
 
@@ -34,7 +35,7 @@ public class gameFrame extends JFrame {
     public gameFrame()
     {
         controllerDmqh controller = controllerDmqh.getInstance();
-        this.setTitle("2048!");
+        this.setTitle("2048");
         this.setSize(500, 500);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setBackground(java.awt.Color.WHITE);
@@ -79,9 +80,17 @@ public class gameFrame extends JFrame {
     
     public void update()
     {
-        dmqhBoard.updateBoard();
-        updateScore();
-        
+        controllerDmqh controller= controllerDmqh.getInstance();
+        if (controller.getPartie().getPartie_finie())
+        {
+            System.out.println("C'est fini gros");
+        }
+        else
+        {
+            dmqhBoard.updateBoard();
+            updateScore();
+        }
+
     }
 
     public void updateScore()

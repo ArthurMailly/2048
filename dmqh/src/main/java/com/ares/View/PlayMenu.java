@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 public class PlayMenu extends JPanel
 {
     JLabel label;
-    JButton easyMode, classicMode, retourMenuButton;
+    JButton easyMode, classicMode, hardMode, retourMenuButton;
 
     public PlayMenu(JPanel cardPanel)
     {
@@ -43,6 +43,16 @@ public class PlayMenu extends JPanel
             }
         });
 
+        hardMode = new JButton("Difficile");
+        hardMode.setBounds(200, 350, 100, 45);
+        this.add(hardMode);
+        hardMode.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jouerHardMode(e);
+            }
+        });
+
         retourMenuButton = new JButton("Retour");
         retourMenuButton.setBounds(200, 400, 100, 45);
         this.add(retourMenuButton);
@@ -62,6 +72,15 @@ public class PlayMenu extends JPanel
     {
         controllerDmqh controller = controllerDmqh.getInstance();
         int userInput=6;
+        controller.setDifficultePartieFromView(userInput);
+        controller.setGameFrame(new gameFrame());
+        SwingUtilities.getWindowAncestor(this).dispose();
+    }
+
+    public void jouerHardMode(ActionEvent e)
+    {
+        controllerDmqh controller = controllerDmqh.getInstance();
+        int userInput=3;
         controller.setDifficultePartieFromView(userInput);
         controller.setGameFrame(new gameFrame());
         SwingUtilities.getWindowAncestor(this).dispose();

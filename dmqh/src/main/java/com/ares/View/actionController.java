@@ -22,6 +22,8 @@ public class actionController implements KeyListener
                 case KeyEvent.VK_D -> controller.getPartie().DeplacementDroite();
                 case KeyEvent.VK_Z -> controller.getPartie().DeplacementHaut();
                 case KeyEvent.VK_S -> controller.getPartie().DeplacementBas();
+                case KeyEvent.VK_R -> controller.getPartie().restart();
+                case KeyEvent.VK_ESCAPE -> System.exit(0);
                 default -> System.out.println("Key pressed: " + e.getKeyChar());
             }
     }

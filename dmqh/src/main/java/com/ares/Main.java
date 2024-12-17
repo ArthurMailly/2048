@@ -15,5 +15,6 @@ public class Main {
         int userInput=4;
         controller.setDifficultePartieFromView(userInput);
         controller.setGameFrame(new gameFrame());
+
     }
 }

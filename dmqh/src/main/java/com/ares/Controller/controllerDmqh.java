@@ -74,6 +74,10 @@ public class controllerDmqh {
         return Cases;
     }
 
+    public void restart(){
+        Partie.getInstance().restart();
+    }
+
 
     
 }

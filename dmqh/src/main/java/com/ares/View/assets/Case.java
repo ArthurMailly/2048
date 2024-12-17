@@ -42,7 +42,7 @@ public class Case extends JPanel {
         {
             case 0 :
                 try {
-                    img = ImageIO.read(new File("dmqh\\src\\main\\resources\\0 Tile.png"));
+                    img = ImageIO.read(new File("dmqh/src/main/resources/0 Tile.png"));
                     picLabel = new JLabel(new ImageIcon(img));
                 } catch (IOException e) {
                     e.printStackTrace();

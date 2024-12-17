@@ -97,5 +97,6 @@ public class Partie
     }
     public void setDifficulte(int difficulte) {this.cote = cote;}
     public int getDifficulte() {return this.cote;}
+    public void restart() {this.plateau = new Plateau(cote, cote);}
     
 }

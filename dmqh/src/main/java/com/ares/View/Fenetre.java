@@ -15,8 +15,6 @@ public class Fenetre
 
         cardPanel.add(new MainMenu(cardPanel), "MainMenu");
         cardPanel.add(new PlayMenu(cardPanel), "PlayMenu");
-        cardPanel.add(new EasyMode(cardPanel), "EasyMode");
-        cardPanel.add(new ClassicMode(cardPanel), "ClassicMode");
         cardPanel.add(new RulesMenu(cardPanel), "RulesMenu");
         cardPanel.add(new OptionMenu(cardPanel), "OptionMenu");
 

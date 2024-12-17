@@ -1,8 +1,11 @@
 package com.ares.View;
 
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import com.ares.Controller.*;
+
+import javax.swing.*;
 
 
 public class actionController implements KeyListener 
@@ -18,19 +21,34 @@ public class actionController implements KeyListener
         controller= controllerDmqh.getInstance();
         switch (e.getKeyCode())
             {
-                case KeyEvent.VK_Q -> controller.getPartie().DeplacementGauche();
-                case KeyEvent.VK_D -> controller.getPartie().DeplacementDroite();
-                case KeyEvent.VK_Z -> controller.getPartie().DeplacementHaut();
-                case KeyEvent.VK_S -> controller.getPartie().DeplacementBas();
-                case KeyEvent.VK_R -> controller.getPartie().restart();
-                case KeyEvent.VK_ESCAPE -> System.exit(0);
-                default -> System.out.println("Key pressed: " + e.getKeyChar());
+                case KeyEvent.VK_Q, KeyEvent.VK_LEFT:
+                    controller.getPartie().DeplacementGauche();
+                    break;
+                case KeyEvent.VK_D, KeyEvent.VK_RIGHT:
+                    controller.getPartie().DeplacementDroite();
+                    break;
+                case KeyEvent.VK_Z, KeyEvent.VK_UP:
+                    controller.getPartie().DeplacementHaut();
+                    break;
+                case KeyEvent.VK_S, KeyEvent.VK_DOWN:
+                    controller.getPartie().DeplacementBas();
+                    break;
+                case KeyEvent.VK_R:
+                    controller.getPartie().restart();
+                    break;
+                case KeyEvent.VK_ESCAPE:
+                    for (Window window : Window.getWindows()) {
+                        window.dispose(); // Ferme chaque fenêtre
+                    }
+                    new Fenetre();
+                    break;
+//                default:
+//                    System.out.println("Key pressed: " + e.getKeyChar());
             }
     }
 
     public void keyReleased(KeyEvent e) {
         // Invoked when a key has been released.
-        controller.getPartie().showPlateau();
         controller.getGameFrame().update();
     }
     

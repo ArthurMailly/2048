@@ -96,11 +96,5 @@ public class dmqhBoard extends JPanel
         super.paintComponent(g);
         dessinerCases(g);
     }
-    
-    
 
-
-    
-    
-	
 }

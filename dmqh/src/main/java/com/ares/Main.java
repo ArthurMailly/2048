@@ -11,10 +11,8 @@ import com.ares.Controller.*;
 public class Main {
 
     public static void main(String[] args) {
-        controllerDmqh controller = controllerDmqh.getInstance();
-        int userInput=4;
-        controller.setDifficultePartieFromView(userInput);
-        controller.setGameFrame(new gameFrame());
+
+        Fenetre fenetre = new Fenetre();
 
     }
 }

@@ -89,9 +89,6 @@ public class Partie
                 case "H" -> DeplacementHaut();
                 case "B" -> DeplacementBas();
             }
-            
-            
-
 
         }
     }

@@ -184,7 +184,6 @@ public class Plateau
                 {
                     deplacement_fait = true;
                     int num_case = this.tableau_case[i][new_J-1].getNombre() * 2;
-                    System.out.println(num_case);
                     CreerCaseNum(i, new_J-1, num_case);
                     CreerCase(i, new_J, true);
                     score += num_case;

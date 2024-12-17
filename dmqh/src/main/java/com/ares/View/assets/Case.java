@@ -20,9 +20,6 @@ public class Case extends JPanel {
     public Point p;
     public BufferedImage img;
     public JLabel picLabel;
-    
-
-
 
     public Case(int cote, int valeur, Point p, Color couleur)
     {
@@ -41,106 +38,59 @@ public class Case extends JPanel {
         switch(valeur)
         {
             case 0 :
-                try {
-                    img = ImageIO.read(new File("src/main/resources/0 Tile.png"));
-                    picLabel = new JLabel(new ImageIcon(img));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                mettre_image("src/main/resources/0 Tile.png");
                 break;
-            case 2 : 
-                try {
-                    img = ImageIO.read(new File("src/main/resources/2 Tile.png"));
-                    picLabel = new JLabel(new ImageIcon(img));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+            case 2 :
+                mettre_image("src/main/resources/2 Tile.png");
                 break;
             case 4 :
-                try {
-                    img = ImageIO.read(new File("src/main/resources/4 Tile.png"));
-                    picLabel = new JLabel(new ImageIcon(img));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                mettre_image("src/main/resources/4 Tile.png");
                 break;
             case 8 :
-                try {
-                    img = ImageIO.read(new File("src/main/resources/8 Tile.png"));
-                    picLabel = new JLabel(new ImageIcon(img));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                mettre_image("src/main/resources/8 Tile.png");
                 break;
             case 16 :
-                try {
-                    img = ImageIO.read(new File("src/main/resources/16 Tile.png"));
-                    picLabel = new JLabel(new ImageIcon(img));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                mettre_image("src/main/resources/16 Tile.png");
                 break;
             case 32 :
-                try {
-                    img = ImageIO.read(new File("src/main/resources/32 Tile.png"));
-                    picLabel = new JLabel(new ImageIcon(img));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                mettre_image("src/main/resources/32 Tile.png");
                 break;
             case 64 :
-                try {
-                    img = ImageIO.read(new File("src/main/resources/64 Tile.png"));
-                    picLabel = new JLabel(new ImageIcon(img));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                mettre_image("src/main/resources/64 Tile.png");
                 break;
             case 128 :
-                try {
-                    img = ImageIO.read(new File("src/main/resources/128 Tile.png"));
-                    picLabel = new JLabel(new ImageIcon(img));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                mettre_image("src/main/resources/128 Tile.png");
                 break;
             case 256 :
-                try {
-                    img = ImageIO.read(new File("src/main/resources/256 Tile.png"));
-                    picLabel = new JLabel(new ImageIcon(img));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                mettre_image("src/main/resources/256 Tile.png");
                 break;  
             case 512 :
-                try {
-                    img = ImageIO.read(new File("src/main/resources/512 Tile.png"));
-                    picLabel = new JLabel(new ImageIcon(img));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                mettre_image("src/main/resources/512 Tile.png");
                 break;
             case 1024 :
-                try {
-                    img = ImageIO.read(new File("src/main/resources/1024 Tile.png"));
-                    picLabel = new JLabel(new ImageIcon(img));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                mettre_image("src/main/resources/1024 Tile.png");
                 break;
             case 2048 :
-                try {
-                    img = ImageIO.read(new File("src/main/resources/2048 Tile.png"));
-                    picLabel = new JLabel(new ImageIcon(img));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                mettre_image("src/main/resources/2048 Tile.png");
                 break;
             default :
         }
         
         this.add(picLabel, BorderLayout.CENTER);
 
+    }
+
+    public void mettre_image(String path)
+    {
+        try {
+            img = ImageIO.read(new File(path));
+            Image scaledImg = img.getScaledInstance(80, 80, Image.SCALE_SMOOTH);
+
+            picLabel = new JLabel(new ImageIcon(scaledImg));
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void updateCase()
@@ -155,15 +105,5 @@ public class Case extends JPanel {
         // g.setColor(couleur);
         // g.fillRect(p.x, p.y, cote, cote);
     }
-    
-
-
-
-
-    
-
-    
-
-
     
 }

@@ -16,12 +16,13 @@ import javax.swing.*;
 public class Case extends JPanel {
     public int cote;
     public int valeur;
+    public int taille_img;
     public Color couleur;
     public Point p;
     public BufferedImage img;
     public JLabel picLabel;
 
-    public Case(int cote, int valeur, Point p, Color couleur)
+    public Case(int cote, int valeur, Point p, Color couleur, int difficulté)
     {
         this.cote = cote;
         this.valeur = valeur;
@@ -30,6 +31,15 @@ public class Case extends JPanel {
         this.img = null;
         this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         this.setLayout(new BorderLayout());
+
+        switch(difficulté)
+        {
+            case 4 -> this.taille_img = 100;
+            case 6 -> this.taille_img = 40;
+            default -> this.taille_img = 60;
+
+        }
+
         addLabels();
         
     }
@@ -84,7 +94,7 @@ public class Case extends JPanel {
     {
         try {
             img = ImageIO.read(new File(path));
-            Image scaledImg = img.getScaledInstance(80, 80, Image.SCALE_SMOOTH);
+            Image scaledImg = img.getScaledInstance(this.taille_img, this.taille_img, Image.SCALE_SMOOTH);
 
             picLabel = new JLabel(new ImageIcon(scaledImg));
 

@@ -67,7 +67,8 @@ public class controllerDmqh {
         {
             for (int j = 0; j < partie.getDifficulte(); j++)
             {
-                com.ares.View.assets.Case c = new com.ares.View.assets.Case(300,partie.getPlateau().getTableau()[j][i].getNombre(),new Point(i,j),partie.getPlateau().getTableau()[i][j].getCouleur());
+                //System.out.println(partie.getDifficulte());
+                com.ares.View.assets.Case c = new com.ares.View.assets.Case(300,partie.getPlateau().getTableau()[j][i].getNombre(),new Point(i,j),partie.getPlateau().getTableau()[i][j].getCouleur(), partie.getDifficulte());
                 Cases.add(c);
             }
         }
@@ -78,6 +79,4 @@ public class controllerDmqh {
         Partie.getInstance().restart();
     }
 
-
-    
 }

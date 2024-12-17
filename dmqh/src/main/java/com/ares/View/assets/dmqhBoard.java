@@ -15,8 +15,6 @@ import javax.swing.*;
 import com.ares.Model.Partie;
 import com.ares.Controller.controllerDmqh;
 
-
-
 public class dmqhBoard extends JPanel
 {
     public BufferedImage fond;
@@ -39,7 +37,6 @@ public class dmqhBoard extends JPanel
        
         addCasesToBoard();
 
-        
     }
 
     public ArrayList<com.ares.View.assets.Case> createCaseArray()

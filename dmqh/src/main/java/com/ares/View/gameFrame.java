@@ -44,7 +44,6 @@ public class gameFrame extends JFrame {
         scorePanel = new JPanel();
         infoPanel = new JPanel();
 
-
         actionController = new actionController();
         this.addKeyListener(actionController);
 
@@ -54,11 +53,11 @@ public class gameFrame extends JFrame {
         scoreLabel.setSize(100, 100);
         scorePanel.add(scoreLabel);
 
-        exitLabel = new JLabel("Pour quitter appuyer sur ECHAP");
+        exitLabel = new JLabel("ECHAP: quitter");
         exitLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         exitLabel.setFont(exitLabel.getFont().deriveFont(20.0f));
 
-        restartLabel = new JLabel("Pour recommencer appuyer sur R");
+        restartLabel = new JLabel("R: recommencer");
         restartLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         restartLabel.setFont(restartLabel.getFont().deriveFont(20.0f));
 

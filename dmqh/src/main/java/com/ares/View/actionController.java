@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import com.ares.Controller.*;
+import com.ares.Model.Partie;
 
 import javax.swing.*;
 
@@ -37,6 +38,7 @@ public class actionController implements KeyListener
                     controller.getPartie().restart();
                     break;
                 case KeyEvent.VK_ESCAPE:
+                    Partie.setInstanceToNull();
                     for (Window window : Window.getWindows()) {
                         window.dispose(); // Ferme chaque fenêtre
                     }

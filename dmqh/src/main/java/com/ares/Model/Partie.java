@@ -25,6 +25,8 @@ public class Partie
         return instance;
     }
 
+    public static void setInstanceToNull() {instance = null;}
+
     public Plateau getPlateau() {return plateau;}
 
     public void showPlateau()
@@ -92,7 +94,7 @@ public class Partie
 
         }
     }
-    public void setDifficulte(int difficulte) {this.cote = cote;}
+    public void setDifficulte(int difficulte) {this.cote = difficulte;}
     public int getDifficulte() {return this.cote;}
     public void restart() {this.plateau = new Plateau(cote, cote);}
     

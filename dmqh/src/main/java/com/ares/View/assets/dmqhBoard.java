@@ -4,22 +4,20 @@ package com.ares.View.assets;
 import java.awt.GridBagConstraints;
 
 import java.awt.GridLayout;
-import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.awt.Graphics;
 import java.awt.Color;
-import java.awt.Container;
 
 import javax.swing.*;
-import com.ares.Model.Partie;
+
 import com.ares.Controller.controllerDmqh;
 
 public class dmqhBoard extends JPanel
 {
     public BufferedImage fond;
     private int taille;
-    private ArrayList<Case> Cases = new ArrayList<Case>();
+    private ArrayList<CaseView> Cases = new ArrayList<CaseView>();
     private static controllerDmqh controller = controllerDmqh.getInstance();
 
     
@@ -39,7 +37,7 @@ public class dmqhBoard extends JPanel
 
     }
 
-    public ArrayList<com.ares.View.assets.Case> createCaseArray()
+    public ArrayList<CaseView> createCaseArray()
     {
         return controller.getPlateauAsCase();
         
@@ -47,7 +45,7 @@ public class dmqhBoard extends JPanel
 
     public void addCasesToBoard()
     {
-        for (Case obj : Cases)
+        for (CaseView obj : Cases)
         {
             this.add(obj);
         }
@@ -77,7 +75,7 @@ public class dmqhBoard extends JPanel
     { 
         this.removeAll(); // Clear the board
         Cases = controller.getPlateauAsCase();
-        for (Case obj : Cases)
+        for (CaseView obj : Cases)
         {
             obj.removeAll();
             obj.addLabels();

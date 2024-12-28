@@ -7,11 +7,20 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
+/**
+ * Cette classe crée le menu jouer
+ */
 public class PlayMenu extends JPanel
 {
     JLabel label;
     JButton easyMode, classicMode, hardMode, retourMenuButton;
 
+
+    /**
+     * Constructeur de la page
+     * @param cardPanel
+     */
     public PlayMenu(JPanel cardPanel)
     {
         setBounds(500, 100, 500, 500);
@@ -59,6 +68,11 @@ public class PlayMenu extends JPanel
         retourMenuButton.addActionListener(event -> cl.show(cardPanel, "MainMenu"));
     }
 
+
+    /**
+     * Lancer le mode de jeu classique
+     * @param e
+     */
     public void jouerClassicMode(ActionEvent e)
     {
         controllerDmqh controller = controllerDmqh.getInstance();
@@ -68,6 +82,11 @@ public class PlayMenu extends JPanel
         SwingUtilities.getWindowAncestor(this).dispose();
     }
 
+
+    /**
+     * Lancer le mode de jeu facile
+     * @param e
+     */
     public void jouerEasyMode(ActionEvent e)
     {
         controllerDmqh controller = controllerDmqh.getInstance();
@@ -77,6 +96,11 @@ public class PlayMenu extends JPanel
         SwingUtilities.getWindowAncestor(this).dispose();
     }
 
+
+    /**
+     * Lancer le mode de jeu difficile
+     * @param e
+     */
     public void jouerHardMode(ActionEvent e)
     {
         controllerDmqh controller = controllerDmqh.getInstance();

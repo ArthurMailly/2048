@@ -1,7 +1,9 @@
 package com.ares.Model;
-
 import java.util.Random;
 
+/**
+ * Cette classe crée le modèle du plateau de jeu
+ */
 public class Plateau
 {
     private int score;
@@ -9,6 +11,12 @@ public class Plateau
     private int cote_y;
     private Case tableau_case[][];
 
+
+    /**
+     * Constructeur d'un plateau
+     * @param x Nombre de lignes
+     * @param y Nombre de colonnes
+     */
     public Plateau(int x, int y)
     {
         this.score = 0;
@@ -16,6 +24,8 @@ public class Plateau
         this.cote_y = y;
 
         this.tableau_case = new Case[this.cote_x][this.cote_y];
+
+        // Initialisation d'un tableau vierge
         for (int i = 0; i < this.cote_x; i++)
         {
             for (int j = 0; j < this.cote_y; j++)
@@ -23,14 +33,16 @@ public class Plateau
                 CreerCase(i, j, true);
             }
         }
-
         // Initialisation des deux premières cases différentes de 0
 
         PlaceCaseAleatoire();
         PlaceCaseAleatoire();
-
     }
 
+
+    /**
+     * Affiche le plateau dans la console, sert au débug
+     */
     public void AfficherPlateau()
     {
         for (int j = 0; j < this.cote_y; j++)
@@ -43,19 +55,38 @@ public class Plateau
             System.out.print("\n");
         }
         System.out.print("\n");
-
     }
 
+
+    /**
+     * Creer soit une case vide soit une nouvelle case 2 ou 4 tirée aléatoirement
+     * @param x numéro de la ligne
+     * @param y numéro de la colonne
+     * @param b est à égal false si on veut créer une nouvelle case qui contient soit un 2 ou un 4. Si b = true, il s'agit d'une case vide
+     */
     public void CreerCase(int x, int y, boolean b) { this.tableau_case[x][y] = new Case(b);}
 
-    public void CreerCaseNum(int x, int y, int n) { this.tableau_case[x][y] = new Case(n, false);}
 
+    /**
+     * Creer une case en lui donnant la valeur que nous voulons dedans
+     * @param x numéro de la ligne
+     * @param y numéro de la colonne
+     * @param n valeur de la case
+     */
+    public void CreerCaseNum(int x, int y, int n) { this.tableau_case[x][y] = new Case(n);}
+
+
+    /**
+     * Choisi aléatoirement un emplacement vide et y créer un 2 ou un 4
+     */
     public void PlaceCaseAleatoire()
     {
+        // Choisi une case aléatoirement
         Random randomCase = new Random();
         int case_x = randomCase.nextInt(this.cote_x);
         int case_y = randomCase.nextInt(this.cote_y);
 
+        // Choisi une nouvelle case tant que l'on n'a pas une case vide
         while(this.tableau_case[case_x][case_y].getNombre() != 0)
         {
             case_x = randomCase.nextInt(this.cote_x);
@@ -66,6 +97,11 @@ public class Plateau
 
     }
 
+
+    /**
+     * Déplace l'ensemble des cases vers la gauche et fusionne les cases s'il y a besoin
+     * @return deplacement_fait qui est à égal à true si au moins une case a été ajouté
+     */
     public Boolean DeplacementGauche() {
         Boolean deplacement_fait = false;
 
@@ -110,10 +146,14 @@ public class Plateau
         if (deplacement_fait) {
             PlaceCaseAleatoire();
         }
-        System.out.println("Deplacement fait gauche: "+deplacement_fait);
         return deplacement_fait;
     }
 
+
+    /**
+     * Déplace l'ensemble des cases vers la droite et fusionne les cases s'il y a besoin
+     * @return deplacement_fait qui est à égal à true si au moins une case a été ajouté
+     */
     public Boolean DeplacementDroite() {
         Boolean deplacement_fait = false;
 
@@ -158,12 +198,14 @@ public class Plateau
         if (deplacement_fait) {
             PlaceCaseAleatoire();
         }
-
-        System.out.println("Deplacement fait droite: "+deplacement_fait);
-
         return deplacement_fait;
     }
 
+
+    /**
+     * Déplace l'ensemble des cases vers le haut et fusionne les cases s'il y a besoin
+     * @return deplacement_fait qui est à égal à true si au moins une case a été ajouté
+     */
     public Boolean DeplacementHaut() {
         Boolean deplacement_fait = false;
 
@@ -208,12 +250,14 @@ public class Plateau
         if (deplacement_fait) {
             PlaceCaseAleatoire();
         }
-
-        System.out.println("Deplacement fait haut: "+deplacement_fait);
         return deplacement_fait;
     }
 
 
+    /**
+     * Déplace l'ensemble des cases vers le bas et fusionne les cases s'il y a besoin
+     * @return deplacement_fait qui est à égal à true si au moins une case a été ajouté
+     */
     public Boolean DeplacementBas() {
         Boolean deplacement_fait = false;
 
@@ -258,12 +302,13 @@ public class Plateau
         if (deplacement_fait) {
             PlaceCaseAleatoire();
         }
-
-        System.out.println("Deplacement fait bas: "+deplacement_fait);
         return deplacement_fait;
     }
 
 
+    /**
+     * Remet l'attribut deja_fusionne de chaque case à false pour le prochain mouvement
+     */
     public void ToutesCasesPasFusionnees()
     {
         for (int i = 0; i < this.cote_x; i++)
@@ -275,21 +320,43 @@ public class Plateau
         }
     }
 
+
+    /**
+     * Retourne le score du joueur
+     * @return score
+     */
     public int getScore()
     {
         return this.score;
     }
 
+
+    /**
+     * Retourne la case en fonction de sa position
+     * @param i numéro de ligne
+     * @param j numéro de colonne
+     * @return la case à l'emplacement i,j
+     */
     public Case getCase(int i,int j)
     {
         return this.tableau_case[i][j];
     }
 
+
+    /**
+     * Renvoie tableau_case
+     * @return tableau_case
+     */
     public Case[][] getTableau()
     {
         return this.tableau_case;
     }
 
+
+    /**
+     * Copie le plateau
+     * @param plateau2 plateau à copier
+     */
     public void copyPlateau(Plateau plateau2)
     {
         this.score = plateau2.score;
@@ -300,6 +367,7 @@ public class Plateau
         {
             for (int j = 0; j < cote_y; j++)
             {
+                // Utilise la fonction copyCase créé dans la classe Case
                 this.tableau_case[i][j].copyCase(plateau2.tableau_case[i][j]);
             }
         }

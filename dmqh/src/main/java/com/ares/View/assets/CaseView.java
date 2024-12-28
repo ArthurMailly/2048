@@ -4,7 +4,6 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Container;
 import java.awt.Point;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -13,28 +12,26 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-public class Case extends JPanel {
+public class CaseView extends JPanel {
     public int cote;
     public int valeur;
     public int taille_img;
-    public Color couleur;
     public Point p;
     public BufferedImage img;
     public JLabel picLabel;
 
-    public Case(int cote, int valeur, Point p, Color couleur, int difficulté)
+    public CaseView(int cote, int valeur, Point p, int difficulté)
     {
         this.cote = cote;
         this.valeur = valeur;
         this.p = p;
-        this.couleur = couleur;
         this.img = null;
         this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         this.setLayout(new BorderLayout());
 
         switch(difficulté)
         {
-            case 4 -> this.taille_img = 100;
+            case 4 -> this.taille_img = 85;
             case 6 -> this.taille_img = 40;
             default -> this.taille_img = 60;
 
@@ -103,17 +100,11 @@ public class Case extends JPanel {
         }
     }
 
-    public void updateCase()
-    {
-        
-
-    }
+    public void updateCase() {}
     @Override
     public void paintComponent(Graphics g)
     {
         super.paintComponent(g);
-        // g.setColor(couleur);
-        // g.fillRect(p.x, p.y, cote, cote);
     }
     
 }

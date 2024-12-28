@@ -23,11 +23,11 @@ import com.ares.View.assets.dmqhBoard;
 public class gameFrame extends JFrame {
 
     public actionController actionController;
-    public JPanel mainPanel,infoPanel;
+    public JPanel mainPanel,infoPanel, scorePanel;
     public dmqhBoard dmqhBoard;
-    public JLabel exitLabel, restartLabel;
+    public JLabel exitLabel, restartLabel, scoreLabel;
+    public JButton exitButton;
 
-    public JPanel scorePanel;
     BufferedImage fond;
     GridLayout layoutDMQH;
     Image Logo;
@@ -44,11 +44,12 @@ public class gameFrame extends JFrame {
         mainPanel = new JPanel(new BorderLayout());
         scorePanel = new JPanel();
         infoPanel = new JPanel();
+        scoreLabel = new JLabel();
 
         actionController = new actionController();
         this.addKeyListener(actionController);
 
-        JLabel scoreLabel = new JLabel("Score : "+controller.getPartie().getScore());
+        scoreLabel.setText("Score : "+controller.getPartie().getScore());
         scoreLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         scoreLabel.setFont(scoreLabel.getFont().deriveFont(20.0f));
         scoreLabel.setSize(100, 100);
@@ -83,11 +84,10 @@ public class gameFrame extends JFrame {
         controllerDmqh controller= controllerDmqh.getInstance();
         if (controller.getPartie().getPartie_finie())
         {
+            int score = controllerDmqh.getInstance().getPartie().getScore();
             dmqhBoard.updateBoard();
             updateScore();
-            System.out.println("C'est fini gros");
-            new EndGamePage();
-            this.dispose();
+            this.scoreLabel.setText("Votre partie est finie ! Votre score est "+score);
         }
         else
         {
@@ -102,8 +102,6 @@ public class gameFrame extends JFrame {
         Color randColor = new Color((int)(Math.random() * 256), (int)(Math.random() * 256), (int)(Math.random() * 256));
         int score = controllerDmqh.getInstance().getPartie().getScore();
         scorePanel.removeAll();
-
-        JLabel scoreLabel = new JLabel();
         
         if (0 < score && score < 100)
         {

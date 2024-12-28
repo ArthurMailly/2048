@@ -12,10 +12,7 @@ import javax.swing.*;
 public class actionController implements KeyListener 
 {
     controllerDmqh controller;
-    public void keyTyped(KeyEvent e) {
-        // Invoked when a key has been typed.
-        // System.out.println("Key typed: " + e.getKeyChar());
-    }
+    public void keyTyped(KeyEvent e) {}
 
     public void keyPressed(KeyEvent e) {
         // Invoked when a key has been pressed.
@@ -44,10 +41,7 @@ public class actionController implements KeyListener
                     }
                     new Fenetre();
                     break;
-//                default:
-//                    System.out.println("Key pressed: " + e.getKeyChar());
             }
-            System.out.println(controller.getPartie().getPartie_finie());
     }
 
     public void keyReleased(KeyEvent e) {

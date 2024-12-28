@@ -3,8 +3,15 @@ package com.ares.View;
 import java.awt.*;
 import javax.swing.*;
 
+
+/**
+ * Fenêtres fonctionnant avec les CardLayout
+ */
 public class Fenetre
 {
+    /**
+     * Constructeur des fenêtres fonctionnant avec les CardLayout
+     */
     public Fenetre()
     {
         JFrame frame = new JFrame("2048");

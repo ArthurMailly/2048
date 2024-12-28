@@ -1,89 +1,85 @@
 package com.ares.Model;
 
-import java.awt.Color;
+/**
+ * Cette classe crée le modèle des cases.
+ */
 
 public class Case {
 
-    private Color couleur;
     private int nombre;
     private boolean deja_fusionne;
 
-    public Case(boolean zero)
-    {
 
-        if ( ! zero)
+    /**
+     * Constructeur d'une nouvelle case.
+     * Si ce n'est pas le cas, alors il s'agit d'une nouvelle case et l'on doit
+     * y mettre un 2 ou un 4 que l'on détermine aléatoirement.
+     * @param vide est égal à true s'il s'agit d'une case vide dans le tableau.
+     */
+    public Case(boolean vide)
+    {
+        if (!vide) // Si la case n'est pas vide, alors elle doit contenir un nombre qui est 2 ou 4.
         {
             double proba = Math.random();
-            if (proba < 0.9)
-            {
-                this.nombre = 2;
-            }
-            else
-            {
-                this.nombre = 4;
-            }
+            if (proba < 0.9) {this.nombre = 2;}
+            else{this.nombre = 4;}
         }
-
-        else
-        {
-            this.nombre = 0;
-        }
-
-        MajCouleur();
+        else {this.nombre = 0;}
 
         this.deja_fusionne = false;
     }
 
-    public Case(int nombre, boolean fusion)
+
+    /**
+     * Constructeur d'une case en lui donnant le nombre
+     * @param nombre nombre que contient la case
+     */
+    public Case(int nombre)
     {
         this.nombre = nombre;
-        MajCouleur();
-        this.deja_fusionne = fusion;
-    }
-
-    public void MajCouleur()
-    {
-        switch (nombre)
-        {
-            case 0 -> couleur = new Color(255,255,255);
-            case 2 -> couleur = new Color(238,228,218);
-            case 4 -> couleur = new Color(237,224,200);
-            case 8 -> couleur = new Color(242,177,121);
-            case 16 -> couleur = new Color(245,149,99);
-            case 32 -> couleur = new Color(246,124,95);
-            case 64 -> couleur = new Color(246,94,59);
-            case 128 -> couleur = new Color(237,207,114);
-            case 256 -> couleur = new Color(237,204,97);
-            case 512 -> couleur = new Color(237,200,80);
-            case 1024 -> couleur = new Color(237,197,63);
-            case 2048 -> couleur = new Color(237,194,46);
-            case 4096 -> couleur = new Color(193,152,183);
-            case 8192 -> couleur = new Color(184,125,176);
-        }
+        this.deja_fusionne = false;
     }
 
 
+    /**
+     * Affiche le nombre de la case, sert pour le débug
+     */
     public void print()
     {
         System.out.print(nombre);
     }
 
+
+    /**
+     * Return le numéro qui se trouve dans la case
+     * @return nombre
+     */
     public int getNombre()
     {
         return nombre;
     }
 
+
+    /**
+     * Change le paramètre deja_fusionne
+     * @param deja_fusionne est égal à true si la case à déjà été fusionné pendant se tour
+     */
     public void setDeja_fusionne(boolean deja_fusionne) { this.deja_fusionne = deja_fusionne; }
 
+
+    /**
+     * Retourne le booléen deja_fusionne
+     * @return deja_fusionne
+     */
     public boolean getDeja_fusionne() {return this.deja_fusionne;}
 
-    public Color getCouleur(){
-        return this.couleur;
-    }
 
+    /**
+     * Copie une case
+     * @param case2 case à recopier
+     */
     public void copyCase(Case case2)
     {
-        this.couleur = case2.couleur;
         this.nombre = case2.nombre;
         this.deja_fusionne = case2.deja_fusionne;
     }

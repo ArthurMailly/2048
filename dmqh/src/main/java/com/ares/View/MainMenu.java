@@ -5,6 +5,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
+
+/**
+ * Cette classe crée le menu principal
+ */
 public class MainMenu extends JPanel {
     JButton playButton;
     JButton optionsButton;
@@ -12,6 +16,11 @@ public class MainMenu extends JPanel {
     JButton quitButton;
     JLabel title;
 
+
+    /**
+     * Constructeur du menu principal
+     * @param cardPanel
+     */
     public MainMenu(JPanel cardPanel) {
         setBounds(500,100,500, 500);
         CardLayout cl = (CardLayout) cardPanel.getLayout();
@@ -47,6 +56,10 @@ public class MainMenu extends JPanel {
         });
 
     }
+
+    /**
+     * Ferme le jeu
+     */
     public void quitterApp() {System.exit(1);}
 
 }

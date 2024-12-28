@@ -16,17 +16,18 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import com.ares.Controller.controllerDmqh;
+import com.ares.Model.Partie;
 import com.ares.View.assets.dmqhBoard;
 
 
 public class gameFrame extends JFrame {
 
     public actionController actionController;
-    public JPanel mainPanel,infoPanel;
+    public JPanel mainPanel,infoPanel, scorePanel;
     public dmqhBoard dmqhBoard;
-    public JLabel exitLabel, restartLabel;
+    public JLabel exitLabel, restartLabel, scoreLabel;
+    public JButton exitButton;
 
-    public JPanel scorePanel;
     BufferedImage fond;
     GridLayout layoutDMQH;
     Image Logo;
@@ -34,48 +35,36 @@ public class gameFrame extends JFrame {
     public gameFrame()
     {
         controllerDmqh controller = controllerDmqh.getInstance();
-        this.setTitle("2048!");
-        this.setSize(1000, 1000);
+        this.setTitle("2048");
+        this.setSize(500, 500);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setBackground(java.awt.Color.WHITE);
-        // ImageIcon Logo = new ImageIcon("C:\\Users\\sfarf\\Bureau\\Repos_Git\\Java_2048\\2048\\dmqh\\src\\main\\resources\\Logo_dmqh.png");
-        // Image scaleLogo = Logo.getImage().getScaledInstance(100, 100,Image.SCALE_DEFAULT);
         
         dmqhBoard = new dmqhBoard();
         mainPanel = new JPanel(new BorderLayout());
         scorePanel = new JPanel();
         infoPanel = new JPanel();
-        
-        
-        
-
-
-        
-
-        
+        scoreLabel = new JLabel();
 
         actionController = new actionController();
         this.addKeyListener(actionController);
 
-        JLabel scoreLabel = new JLabel("Score : "+controller.getPartie().getScore());
+        scoreLabel.setText("Score : "+controller.getPartie().getScore());
         scoreLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        scoreLabel.setFont(scoreLabel.getFont().deriveFont(40.0f));
+        scoreLabel.setFont(scoreLabel.getFont().deriveFont(20.0f));
         scoreLabel.setSize(100, 100);
         scorePanel.add(scoreLabel);
 
-        exitLabel = new JLabel("Pour quitter appuyer sur ECHAP");
+        exitLabel = new JLabel("ECHAP: quitter");
         exitLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         exitLabel.setFont(exitLabel.getFont().deriveFont(20.0f));
 
-        restartLabel = new JLabel("Pour recommencer appuyer sur R");
+        restartLabel = new JLabel("R: recommencer");
         restartLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         restartLabel.setFont(restartLabel.getFont().deriveFont(20.0f));
 
         infoPanel.add(exitLabel, BorderLayout.WEST);
         infoPanel.add(restartLabel, BorderLayout.EAST);
-
-
-
 
         
         mainPanel.add(scorePanel, BorderLayout.NORTH);
@@ -87,18 +76,25 @@ public class gameFrame extends JFrame {
 
         this.setVisible(true);
 
-
-
-        
-
     }
 
     
     public void update()
     {
-        dmqhBoard.updateBoard();
-        updateScore();
-        
+        controllerDmqh controller= controllerDmqh.getInstance();
+        if (controller.getPartie().getPartie_finie())
+        {
+            int score = controllerDmqh.getInstance().getPartie().getScore();
+            dmqhBoard.updateBoard();
+            updateScore();
+            this.scoreLabel.setText("Votre partie est finie ! Votre score est "+score);
+        }
+        else
+        {
+            dmqhBoard.updateBoard();
+            updateScore();
+        }
+
     }
 
     public void updateScore()
@@ -109,72 +105,34 @@ public class gameFrame extends JFrame {
         
         if (0 < score && score < 100)
         {
-            JLabel scoreLabel = new JLabel("Score du bouffon : "+score);
-            scoreLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-            scoreLabel.setFont(scoreLabel.getFont().deriveFont(40.0f));
-            scoreLabel.setSize(100, 100);
-            scoreLabel.setForeground(randColor);
-            scorePanel.add(scoreLabel);
-
+            scoreLabel.setText("Score du bouffon : "+score);
         }
         else if (100<=score && score <250)
         {
-            JLabel scoreLabel = new JLabel("Score du fdp : "+score);
-            scoreLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-            scoreLabel.setFont(scoreLabel.getFont().deriveFont(40.0f));
-            scoreLabel.setSize(100, 100);
-            scoreLabel.setForeground(randColor);
-            scorePanel.add(scoreLabel);
+            scoreLabel.setText("Score du fdp : "+score);
         }
         else if (250<=score && score <500)
         {
-            JLabel scoreLabel = new JLabel("Score du bg : "+score);
-            scoreLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-            scoreLabel.setFont(scoreLabel.getFont().deriveFont(40.0f));
-            scoreLabel.setSize(100, 100);
-            scoreLabel.setForeground(randColor);
-            scorePanel.add(scoreLabel);
+            scoreLabel.setText("Score du BG : "+score);
         }
         else if (500<=score && score <1000)
         {
-            JLabel scoreLabel = new JLabel("Score du chien de la casse : "+score);
-            scoreLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-            scoreLabel.setFont(scoreLabel.getFont().deriveFont(40.0f));
-            scoreLabel.setSize(100, 100);
-            scoreLabel.setForeground(randColor);
-            scorePanel.add(scoreLabel);
+            scoreLabel.setText("Score du chien de la casse : "+score);
         }
         else if (1000<=score && score <1500)
         {
-            JLabel scoreLabel = new JLabel("Score de l'homme respectable : "+score);
-            scoreLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-            scoreLabel.setFont(scoreLabel.getFont().deriveFont(40.0f));
-            scoreLabel.setSize(100, 100);
-            scoreLabel.setForeground(randColor);
-            scorePanel.add(scoreLabel);
+            scoreLabel.setText("Score de l'Homme respectable : "+score);
         }
         else
         {
-            JLabel scoreLabel = new JLabel("Score du clochard : "+score);
-            scoreLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-            scoreLabel.setFont(scoreLabel.getFont().deriveFont(40.0f));
-            scoreLabel.setSize(100, 100);
-            scoreLabel.setForeground(randColor);
-            scorePanel.add(scoreLabel);
+            scoreLabel.setText("Score du clochard : "+score);
         }
-        // scoreLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        // scoreLabel.setFont(scoreLabel.getFont().deriveFont(40.0f));
-        // scoreLabel.setSize(100, 100);
-        // scoreLabel.setForeground(randColor);
-        // scorePanel.add(scoreLabel);
+        scoreLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        scoreLabel.setFont(scoreLabel.getFont().deriveFont(20.0f));
+        scoreLabel.setSize(100, 100);
+        scoreLabel.setForeground(randColor);
+        scorePanel.add(scoreLabel);
         scorePanel.repaint();
     }
 
-    
-    
-
-
-
-    
-    
 }

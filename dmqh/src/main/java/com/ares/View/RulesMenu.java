@@ -5,11 +5,20 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
+/**
+ * Cette classe crée le page des règles
+ */
 public class RulesMenu extends JPanel
 {
     JButton retourMenuButton;
     JLabel title;
 
+
+    /**
+     * Constructeur de la page des règles
+     * @param cardPanel
+     */
     public RulesMenu(JPanel cardPanel)
     {
         setBounds(500,100,500, 500);

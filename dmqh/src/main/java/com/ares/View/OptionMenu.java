@@ -5,11 +5,20 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
+/**
+ * Cette classe crée la page des options
+ */
 public class OptionMenu extends JPanel
 {
     JButton retourMenuButton;
     JLabel title;
 
+
+    /**
+     * Constructeur du menu des options
+     * @param cardPanel
+     */
     public OptionMenu(JPanel cardPanel) {
         setBounds(500, 100, 500, 500);
         CardLayout cl = (CardLayout) cardPanel.getLayout();

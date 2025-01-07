@@ -1,0 +1,24 @@
+-classpath
+'C:/Users/sfarf/.m2/repository/net/lenni0451/commons/swing/1.6.0/swing-1.6.0.jar;C:/Users/sfarf/.m2/repository/no/tornado/tornadofx-android-compat/1.0.1/tornadofx-android-compat-1.0.1.jar'
+-encoding
+'UTF-8'
+-protected
+-source
+'17'
+-sourcepath
+'C:/Users/sfarf/Bureau/Repos_Git/Java_2048/2048/dmqh/src/main/java;C:/Users/sfarf/Bureau/Repos_Git/Java_2048/2048/dmqh/target/generated-sources/annotations'
+-author
+-bottom
+'Copyright &#169; 2025. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'C:/Users/sfarf/Bureau/Repos_Git/Java_2048/2048/dmqh/target/reports/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'dmqh 1.0-SNAPSHOT API'
+-use
+-version
+-windowtitle
+'dmqh 1.0-SNAPSHOT API'

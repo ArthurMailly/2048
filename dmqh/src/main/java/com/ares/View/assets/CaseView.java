@@ -11,6 +11,11 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+/**
+ * 
+ * Cette classe crée l'aspect visuel des cases. Lors de son instanciation, elle crée une case avec une valeur et une position donnée, en suivant un Switch Case pour déterminer l'image à afficher.
+ * La classe hérite de la classe JPanel disponible dans la bibliothèque Swing de Java. Le fait de réutiliser cette classe simplifie l'intégration des objets graphiques dans la fenetre de jeu, et utilise l'approche de programmation modulaire de Swing.
+ */
 
 public class CaseView extends JPanel {
     public int cote;
@@ -19,7 +24,13 @@ public class CaseView extends JPanel {
     public Point p;
     public BufferedImage img;
     public JLabel picLabel;
-
+    /**
+        * Constructeur d'une case, prend en paramètre la taille de la case, la valeur de la case, la position de la case et la difficulté du jeu.
+        * @param cote taille de la case
+        * @param valeur valeur de la case
+        * @param p position de la case
+        * @param difficulté difficulté du jeu
+     */
     public CaseView(int cote, int valeur, Point p, int difficulté)
     {
         this.cote = cote;
@@ -40,6 +51,9 @@ public class CaseView extends JPanel {
         addLabels();
         
     }
+    /**
+     * Ajoute les labels aux cases en fonction de leur valeur, et via un switch case, détermine l'image à afficher. La méthode mettre_image() permet de passer l'image en JLabel, ce qui permet de l'intégrer à la classe CaseView.
+     */
     public void addLabels()
     {
         switch(valeur)
@@ -86,6 +100,10 @@ public class CaseView extends JPanel {
         this.add(picLabel, BorderLayout.CENTER);
 
     }
+    /**
+     * Permet de mettre une image dans la case, l'image au format png est transformée en JLabel pour être affichée.
+     * @param path
+     */
 
     public void mettre_image(String path)
     {
@@ -99,8 +117,10 @@ public class CaseView extends JPanel {
             e.printStackTrace();
         }
     }
-
-    public void updateCase() {}
+    /**
+     * Permet de peindre les composants de la case. Override de la méthode paintComponent de la classe JPanel afin de pouvoir garder les composants dans la fenêtre de facon persistante.
+     * @param g
+     */
     @Override
     public void paintComponent(Graphics g)
     {

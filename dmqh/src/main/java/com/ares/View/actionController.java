@@ -8,7 +8,10 @@ import com.ares.Model.Partie;
 
 import javax.swing.*;
 
-
+/**
+ * Cette classe permet de gérer les actions du joueur, en fonction des touches du clavier appuyées.
+ * Elle implémente l'interface KeyListener, qui permet de gérer les événements liés aux touches du clavier, en utilisant un Switch Case pour déterminer l'action à effectuer.
+ */
 public class actionController implements KeyListener 
 {
     controllerDmqh controller;
@@ -43,7 +46,10 @@ public class actionController implements KeyListener
                     break;
             }
     }
-
+    /**
+     * Cette méthode est appelée lorsque la touche est relâchée. A chaque fois que le joueur appuie sur une touche, le jeu met à jour l'écran et l'état des cases.
+     * Ceci permet d'avoir un affichage en temps réel des actions du joueur.
+     */
     public void keyReleased(KeyEvent e) {
         // Invoked when a key has been released.
         controller.getGameFrame().update();

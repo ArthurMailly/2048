@@ -11,12 +11,17 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.awt.Color;
 import javax.imageio.ImageIO;
+import javax.naming.spi.DirStateFactory.Result;
 import javax.swing.*;
 
 import com.ares.Controller.controllerDmqh;
 import com.ares.Model.Partie;
+import com.ares.Model.bdConnection;
 import com.ares.View.assets.dmqhBoard;
 
 @SuppressWarnings("unused")
@@ -38,6 +43,7 @@ public class gameFrame extends JFrame {
     public dmqhBoard dmqhBoard;
     public JLabel exitLabel, restartLabel, scoreLabel;
     public JButton exitButton;
+    public bdConnection bd;
 
     BufferedImage fond;
     GridLayout layoutDMQH;
@@ -55,6 +61,7 @@ public class gameFrame extends JFrame {
         this.setSize(500, 500);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setBackground(java.awt.Color.WHITE);
+        bd = controller.connectToDB();
         
         dmqhBoard = new dmqhBoard();
         mainPanel = new JPanel(new BorderLayout());
@@ -104,18 +111,43 @@ public class gameFrame extends JFrame {
     
     public void update()
     {
+        
         controllerDmqh controller= controllerDmqh.getInstance();
         if (controller.getPartie().getPartie_finie())
         {
+            ResultSet results = bd.printAllinDB();
+            ArrayList<String> usernameList = new ArrayList<String>();
+            
             int score = controllerDmqh.getInstance().getPartie().getScore();
             dmqhBoard.updateBoard();
             updateScore();
             this.scoreLabel.setText("Votre partie est finie ! Votre score est "+score);
+            try {
+                while (results.next()) {
+                    usernameList.add(results.getString("username"));
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            System.out.println(usernameList);
+
+            if(usernameList.contains(controller.getUsername()))
+            {
+                controller.updateScorInDB(score);
+                
+            }
+            else
+            {
+                controller.insertNewScore(score);
+                
+            }
         }
         else
         {
             dmqhBoard.updateBoard();
             updateScore();
+
+
         }
 
     }
@@ -131,27 +163,15 @@ public class gameFrame extends JFrame {
         
         if (0 < score && score < 100)
         {
-            scoreLabel.setText("Score du bouffon : "+score);
-        }
-        else if (100<=score && score <250)
-        {
-            scoreLabel.setText("Score du fdp : "+score);
-        }
-        else if (250<=score && score <500)
-        {
-            scoreLabel.setText("Score du BG : "+score);
+            scoreLabel.setText("Score du débutant : "+score);
         }
         else if (500<=score && score <1000)
         {
-            scoreLabel.setText("Score du chien de la casse : "+score);
+            scoreLabel.setText("Score du joueur expérimenté : "+score);
         }
-        else if (1000<=score && score <1500)
+        else if (3000>=score)
         {
-            scoreLabel.setText("Score de l'Homme respectable : "+score);
-        }
-        else
-        {
-            scoreLabel.setText("Score du clochard : "+score);
+            scoreLabel.setText("Score du pro : "+score);
         }
         scoreLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         scoreLabel.setFont(scoreLabel.getFont().deriveFont(20.0f));

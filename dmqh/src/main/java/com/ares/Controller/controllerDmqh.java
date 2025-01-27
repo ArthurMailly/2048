@@ -3,14 +3,17 @@ package com.ares.Controller;
 import com.ares.View.assets.CaseView;
 import com.ares.View.gameFrame;
 import com.ares.Model.Partie;
+import com.ares.Model.bdConnection;
 
 import java.awt.Point;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 
 public class controllerDmqh {
     private gameFrame gameFrame;
     private static controllerDmqh instance;
     private int difficultePartie;
+    private bdConnection bdConnection;
 
     private controllerDmqh() {
 
@@ -75,5 +78,38 @@ public class controllerDmqh {
     public void restart(){
         Partie.getInstance().restart();
     }
+
+    public bdConnection connectToDB(){
+        bdConnection = new bdConnection();
+        return bdConnection;
+    }
+
+    public void insertNewScore(int score){
+        bdConnection.insertNewScore(score);
+    }
+
+    public void updateScorInDB(int score){
+        bdConnection.updateScore(score);
+    }
+
+    public void updateScore(int score){
+        gameFrame.updateScore();
+    }
+
+    public void CreateDB(){
+        bdConnection.CreateDB();
+    }
+
+    public ResultSet printAllinDB(){
+        return bdConnection.printAllinDB();
+    }
+
+    public String getUsername(){
+        return bdConnection.getUsername();
+    }
+
+
+    
+
 
 }

@@ -12,6 +12,8 @@ import com.ares.Model.*;
 public class Main {
 
     public static void main(String[] args) {
+        bdConnection bd = new bdConnection();
+        bd.CreateDB();
         // bdConnection bd = new bdConnection();
         // ResultSet results = bd.printAllinDB();
 

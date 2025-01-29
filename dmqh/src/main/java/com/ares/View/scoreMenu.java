@@ -53,13 +53,14 @@ public class scoreMenu extends JFrame
             @Override
             public void actionPerformed(ActionEvent e) {
                 afficherScores();
-
             }
         });
         this.add(afficherScores);
-
     }
-    // Méthode pour récupérer et afficher les scores
+
+    /**
+     * Récupère et affiche les scores
+     */
     private void afficherScores() {
         ResultSet results = bd.printAllinDB(); // Récupérer les scores
 
@@ -78,12 +79,6 @@ public class scoreMenu extends JFrame
         }
     }
 
-//    @Override
-//    public void paintComponent(Graphics g) {
-//        super.paintComponent(g);
-//        g.setColor(Color.WHITE);
-//        g.fillRect(0, 0, 500, 500);
-//    }
 
     /**
      * Retourner au menu principal
@@ -94,5 +89,4 @@ public class scoreMenu extends JFrame
         frame.setVisible(true);
         this.dispose();
     }
-
 }

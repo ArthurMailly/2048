@@ -1,30 +1,20 @@
 package com.ares.View;
 
 import java.awt.BorderLayout;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.image.BufferedImage;
 import java.awt.Image;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.io.File;
-import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.awt.Color;
-import javax.imageio.ImageIO;
-import javax.naming.spi.DirStateFactory.Result;
 import javax.swing.*;
 
 import com.ares.Controller.controllerDmqh;
-import com.ares.Model.Partie;
 import com.ares.Model.bdConnection;
 import com.ares.View.assets.dmqhBoard;
 
-@SuppressWarnings("unused")
+
 /**
  * Cette classe centralise les éléments graphiques du jeu, et permet de les afficher à l'écran. Elle agit comme un conteneur pour les éléments graphiques du jeu.
  * Elle hérite de la classe JFrame disponible dans la bibliothèque Swing de Java. Dedans, nous pouvons retrouver les classes principales permettant l'affichage du jeu; 
@@ -35,7 +25,6 @@ import com.ares.View.assets.dmqhBoard;
     * - infoPanel, qui est le panel d'information de la fenêtre de jeu.
     * - scorePanel, qui est le panel de score de la fenêtre de jeu.
  */
-  
 public class gameFrame extends JFrame {
 
     public actionController actionController;
@@ -45,9 +34,7 @@ public class gameFrame extends JFrame {
     public JButton exitButton;
     public bdConnection bd;
 
-    BufferedImage fond;
-    GridLayout layoutDMQH;
-    Image Logo;
+
     /**
      * Constructeur de la fenêtre de jeu, qui initialise les éléments graphiques du jeu.
      * On définit le titre de la fenêtre, sa taille, sa couleur de fond, et on ajoute les éléments graphiques principaux de la fenêtre de jeu.
@@ -88,18 +75,16 @@ public class gameFrame extends JFrame {
 
         infoPanel.add(exitLabel, BorderLayout.WEST);
         infoPanel.add(restartLabel, BorderLayout.EAST);
-
         
         mainPanel.add(scorePanel, BorderLayout.NORTH);
         mainPanel.add(dmqhBoard, BorderLayout.CENTER);
         mainPanel.add(infoPanel, BorderLayout.SOUTH);
 
-
         this.add(mainPanel);
-
         this.setVisible(true);
-
     }
+
+
     /**
      * Cette méthode permet de mettre à jour l'écran de jeu, en fonction de l'état de la partie.
      * Si la partie est finie, un écran de fin de partie s'affiche, avec le score du joueur.
@@ -107,8 +92,6 @@ public class gameFrame extends JFrame {
      * Afin de mettre à jour, on appelle la méthode updateBoard() de la classe dmqhBoard, qui permet de mettre à jour le plateau de jeu.
      * 
      */
-
-    
     public void update()
     {
         
@@ -139,26 +122,17 @@ public class gameFrame extends JFrame {
             }
             System.out.println(usernameList);
 
-            if(usernameList.contains(controller.getUsername()))
-            {
-                controller.updateScorInDB(score);
-                
-            }
-            else
-            {
-                controller.insertNewScore(score);
-                
-            }
+            if(usernameList.contains(controller.getUsername())) {controller.updateScorInDB(score);}
+            else {controller.insertNewScore(score);}
         }
         else
         {
             dmqhBoard.updateBoard();
             updateScore();
-
-
         }
-
     }
+
+
     /**
      * Cette méthode permet de mettre à jour le score du joueur, en fonction de son score actuel.
      * Pour un ajout visuel, chaque mise à jour du score change la couleur du texte du score de facon aléatoire.
@@ -195,5 +169,4 @@ public class gameFrame extends JFrame {
         scorePanel.add(scoreLabel);
         scorePanel.repaint();
     }
-
 }

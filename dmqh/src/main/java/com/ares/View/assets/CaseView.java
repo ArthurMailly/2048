@@ -24,6 +24,8 @@ public class CaseView extends JPanel {
     public Point p;
     public BufferedImage img;
     public JLabel picLabel;
+
+
     /**
         * Constructeur d'une case, prend en paramètre la taille de la case, la valeur de la case, la position de la case et la difficulté du jeu.
         * @param cote taille de la case
@@ -45,12 +47,11 @@ public class CaseView extends JPanel {
             case 4 -> this.taille_img = 85;
             case 6 -> this.taille_img = 40;
             default -> this.taille_img = 60;
-
         }
-
         addLabels();
-        
     }
+
+
     /**
      * Ajoute les labels aux cases en fonction de leur valeur, et via un switch case, détermine l'image à afficher. La méthode mettre_image() permet de passer l'image en JLabel, ce qui permet de l'intégrer à la classe CaseView.
      */
@@ -96,15 +97,14 @@ public class CaseView extends JPanel {
                 break;
             default :
         }
-        
         this.add(picLabel, BorderLayout.CENTER);
-
     }
+
+
     /**
      * Permet de mettre une image dans la case, l'image au format png est transformée en JLabel pour être affichée.
      * @param path
      */
-
     public void mettre_image(String path)
     {
         try {
@@ -117,6 +117,8 @@ public class CaseView extends JPanel {
             e.printStackTrace();
         }
     }
+
+
     /**
      * Permet de peindre les composants de la case. Override de la méthode paintComponent de la classe JPanel afin de pouvoir garder les composants dans la fenêtre de facon persistante.
      * @param g
@@ -126,5 +128,4 @@ public class CaseView extends JPanel {
     {
         super.paintComponent(g);
     }
-    
 }

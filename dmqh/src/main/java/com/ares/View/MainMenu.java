@@ -65,8 +65,8 @@ public class MainMenu extends JFrame {
                 quitterApp();
             }
         });
-
     }
+
 
     /**
      * Va au menu pour lancer une partie
@@ -78,6 +78,7 @@ public class MainMenu extends JFrame {
         this.dispose();
     }
 
+
     /**
      * Va au menu des règles
      */
@@ -88,6 +89,10 @@ public class MainMenu extends JFrame {
         this.dispose();
     }
 
+
+    /**
+     * Va au menu des scores
+     */
     public void allerMenuScore()
     {
         scoreMenu frame = new scoreMenu();
@@ -95,9 +100,9 @@ public class MainMenu extends JFrame {
         this.dispose();
     }
 
+
     /**
      * Ferme le jeu
      */
     public void quitterApp() {System.exit(1);}
-
 }

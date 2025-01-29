@@ -146,19 +146,19 @@ public class gameFrame extends JFrame {
 
         if (controllerDmqh.getInstance().getPartie().getPartieGagnee()) {gagneLabel = "Bravo ! Vous avez gagné ! ";}
         
-        if (0 < score && score < 100)
+        if (0 < score && score < 1000)
         {
             scoreLabel.setText(gagneLabel+"Score du débutant : "+score);
         }
-        else if (500<=score && score <1000)
+        else if (1000<=score && score <5000)
         {
             scoreLabel.setText(gagneLabel+"Score du joueur expérimenté : "+score);
         }
-        else if (3000<=score && score <7000)
+        else if (5000<=score && score <10000)
         {
             scoreLabel.setText(gagneLabel+"Score du pro : "+score);
         }
-        else if (score >= 7000)
+        else if (score >= 1000)
         {
             scoreLabel.setText(gagneLabel+"Score du GOAT : "+score);
         }

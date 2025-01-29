@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 /**
  * Cette classe crée le menu jouer
  */
-public class PlayMenu extends JPanel
+public class PlayMenu extends JFrame
 {
     JLabel label;
     JButton easyMode, classicMode, hardMode, retourMenuButton;
@@ -19,12 +19,12 @@ public class PlayMenu extends JPanel
 
     /**
      * Constructeur de la page
-     * @param cardPanel
      */
-    public PlayMenu(JPanel cardPanel)
+    public PlayMenu()
     {
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(500, 100, 500, 500);
-        CardLayout cl = (CardLayout) cardPanel.getLayout();
+        //CardLayout cl = (CardLayout) cardPanel.getLayout();
         setLayout(null);
 
         label = new JLabel("Allons jouer !", JLabel.CENTER);
@@ -65,7 +65,11 @@ public class PlayMenu extends JPanel
         retourMenuButton = new JButton("Retour");
         retourMenuButton.setBounds(200, 400, 100, 45);
         this.add(retourMenuButton);
-        retourMenuButton.addActionListener(event -> cl.show(cardPanel, "MainMenu"));
+        retourMenuButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                retourMainMenu();
+            }
+        });
     }
 
 
@@ -108,5 +112,15 @@ public class PlayMenu extends JPanel
         controller.setDifficultePartieFromView(userInput);
         controller.setGameFrame(new gameFrame());
         SwingUtilities.getWindowAncestor(this).dispose();
+    }
+
+    /**
+     * Retourner au menu principal
+     */
+    public void retourMainMenu()
+    {
+        MainMenu frame = new MainMenu();
+        frame.setVisible(true);
+        this.dispose();
     }
 }

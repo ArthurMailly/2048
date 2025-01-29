@@ -20,11 +20,11 @@ public class Fenetre
 
         JPanel cardPanel = new JPanel(new CardLayout());
 
-        cardPanel.add(new MainMenu(cardPanel), "MainMenu");
-        cardPanel.add(new PlayMenu(cardPanel), "PlayMenu");
+        //cardPanel.add(new MainMenu(cardPanel), "MainMenu");
+        //cardPanel.add(new PlayMenu(cardPanel), "PlayMenu");
         // cardPanel.add(new RulesMenu(cardPanel), "RulesMenu");
-        cardPanel.add(new OptionMenu(cardPanel), "OptionMenu");
-        cardPanel.add(new scoreMenu(cardPanel), "ScoreMenu");
+        //cardPanel.add(new OptionMenu(cardPanel), "OptionMenu");
+        //cardPanel.add(new scoreMenu(cardPanel), "ScoreMenu");
 
         frame.add(cardPanel);
         frame.setVisible(true);

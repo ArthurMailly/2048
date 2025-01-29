@@ -12,12 +12,11 @@ import com.ares.Model.*;
 public class Main {
 
     public static void main(String[] args) {
-        // bdConnection bd = new bdConnection();
-        // bd.CreateDB();
+//        bdConnection bd = new bdConnection();
+//        bd.CreateDB();
         // bdConnection bd = new bdConnection();
         // ResultSet results = bd.printAllinDB();
 
-        new Fenetre();
         // try {
         //     while (results.next()) {
         //         String username = results.getString("username");
@@ -32,6 +31,9 @@ public class Main {
 
         // controllerDmqh controller = controllerDmqh.getInstance();
         // controller.updateScore(0);
+
+        MainMenu frame = new MainMenu();
+        frame.setVisible(true);
 
     }
 }

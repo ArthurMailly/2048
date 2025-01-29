@@ -83,7 +83,7 @@ public class PlayMenu extends JFrame
         int userInput=4;
         controller.setDifficultePartieFromView(userInput);
         controller.setGameFrame(new gameFrame());
-        SwingUtilities.getWindowAncestor(this).dispose();
+        this.dispose();
     }
 
 
@@ -97,7 +97,7 @@ public class PlayMenu extends JFrame
         int userInput=6;
         controller.setDifficultePartieFromView(userInput);
         controller.setGameFrame(new gameFrame());
-        SwingUtilities.getWindowAncestor(this).dispose();
+        this.dispose();
     }
 
 
@@ -111,7 +111,7 @@ public class PlayMenu extends JFrame
         int userInput=3;
         controller.setDifficultePartieFromView(userInput);
         controller.setGameFrame(new gameFrame());
-        SwingUtilities.getWindowAncestor(this).dispose();
+        this.dispose();
     }
 
     /**

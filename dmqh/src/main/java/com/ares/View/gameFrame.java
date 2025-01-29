@@ -58,7 +58,7 @@ public class gameFrame extends JFrame {
     {
         controllerDmqh controller = controllerDmqh.getInstance();
         this.setTitle("2048");
-        this.setSize(500, 500);
+        setBounds(500,100,500, 500);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setBackground(java.awt.Color.WHITE);
         bd = controller.connectToDB();

@@ -10,7 +10,7 @@ import java.sql.Statement;
 public class bdConnection {
     String jdbcUrl = "jdbc:postgresql://localhost:5432/DMQH_java";
     String username = "postgres";//ICI AJOUTER VOTRE NOM D'UTILISATEUR
-    String password = "ClashOfTanks123";//ICI AJOUTER VOTRE MOT DE PASSE
+    String password = "";//ICI AJOUTER VOTRE MOT DE PASSE
 
     private static final String CREATE_TABLE_SQL = "CREATE TABLE score"
             + "("

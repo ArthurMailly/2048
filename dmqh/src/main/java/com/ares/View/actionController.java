@@ -42,7 +42,8 @@ public class actionController implements KeyListener
                     for (Window window : Window.getWindows()) {
                         window.dispose(); // Ferme chaque fenêtre
                     }
-                    new Fenetre();
+                    MainMenu frame = new MainMenu();
+                    frame.setVisible(true);
                     break;
             }
     }

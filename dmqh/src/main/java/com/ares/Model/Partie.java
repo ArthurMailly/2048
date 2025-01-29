@@ -36,6 +36,8 @@ public class Partie
         return instance;
     }
 
+    public boolean getPartieGagnee() {return plateau.plateauGagne();}
+
 
     /**
      * Remet l'instance à null
@@ -191,4 +193,6 @@ public class Partie
      * Recommence la partie
      */
     public void restart() {this.plateau = new Plateau(cote, cote);}
+
+
 }

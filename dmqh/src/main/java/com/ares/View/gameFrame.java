@@ -58,7 +58,7 @@ public class gameFrame extends JFrame {
     {
         controllerDmqh controller = controllerDmqh.getInstance();
         this.setTitle("2048");
-        this.setSize(500, 500);
+        setBounds(500,100,500, 500);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setBackground(java.awt.Color.WHITE);
         bd = controller.connectToDB();
@@ -121,7 +121,15 @@ public class gameFrame extends JFrame {
             int score = controllerDmqh.getInstance().getPartie().getScore();
             dmqhBoard.updateBoard();
             updateScore();
-            this.scoreLabel.setText("Votre partie est finie ! Votre score est "+score);
+            if (controllerDmqh.getInstance().getPartie().getPartieGagnee())
+            {
+                this.scoreLabel.setText("Vous avez gagné ! Votre score est "+score+" !");
+            }
+            else
+            {
+                this.scoreLabel.setText("Vous avez perdu ! Votre score est "+score+" !");
+            }
+
             try {
                 while (results.next()) {
                     usernameList.add(results.getString("username"));
@@ -160,18 +168,25 @@ public class gameFrame extends JFrame {
         Color randColor = new Color((int)(Math.random() * 256), (int)(Math.random() * 256), (int)(Math.random() * 256));
         int score = controllerDmqh.getInstance().getPartie().getScore();
         scorePanel.removeAll();
+        String gagneLabel = "";
+
+        if (controllerDmqh.getInstance().getPartie().getPartieGagnee()) {gagneLabel = "Bravo ! Vous avez gagné ! ";}
         
         if (0 < score && score < 100)
         {
-            scoreLabel.setText("Score du débutant : "+score);
+            scoreLabel.setText(gagneLabel+"Score du débutant : "+score);
         }
         else if (500<=score && score <1000)
         {
-            scoreLabel.setText("Score du joueur expérimenté : "+score);
+            scoreLabel.setText(gagneLabel+"Score du joueur expérimenté : "+score);
         }
-        else if (3000>=score)
+        else if (3000<=score && score <7000)
         {
-            scoreLabel.setText("Score du pro : "+score);
+            scoreLabel.setText(gagneLabel+"Score du pro : "+score);
+        }
+        else if (score >= 7000)
+        {
+            scoreLabel.setText(gagneLabel+"Score du GOAT : "+score);
         }
         scoreLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         scoreLabel.setFont(scoreLabel.getFont().deriveFont(20.0f));

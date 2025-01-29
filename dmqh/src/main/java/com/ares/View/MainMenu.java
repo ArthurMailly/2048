@@ -9,9 +9,8 @@ import javax.swing.*;
 /**
  * Cette classe crée le menu principal
  */
-public class MainMenu extends JPanel {
+public class MainMenu extends JFrame {
     JButton playButton;
-    JButton optionsButton;
     JButton rulesButton;
     JButton quitButton;
     JButton scoreButton;
@@ -20,11 +19,11 @@ public class MainMenu extends JPanel {
 
     /**
      * Constructeur du menu principal
-     * @param cardPanel
      */
-    public MainMenu(JPanel cardPanel) {
+    public MainMenu() {
+
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(500,100,500, 500);
-        CardLayout cl = (CardLayout) cardPanel.getLayout();
         setLayout(null);
 
         title = new JLabel("2048", JLabel.CENTER);
@@ -35,22 +34,28 @@ public class MainMenu extends JPanel {
         playButton = new JButton("Jouer");
         playButton.setBounds(200,200,100,45);
         this.add(playButton);
-        playButton.addActionListener(event -> cl.show(cardPanel, "PlayMenu"));
-
-        optionsButton = new JButton("Options");
-        optionsButton.setBounds(200,250,100,45);
-        this.add(optionsButton);
-        optionsButton.addActionListener(event -> cl.show(cardPanel, "OptionMenu"));
+        //playButton.addActionListener(event -> cl.show(cardPanel, "PlayMenu"));
+        playButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {allerMenuPlay(); }
+        });
 
         rulesButton = new JButton("Règles");
         rulesButton.setBounds(200,300,100,45);
         this.add(rulesButton);
-        rulesButton.addActionListener(event -> cl.show(cardPanel, "RulesMenu"));
+        rulesButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                allerMenuRegles();
+            }
+        });
 
         scoreButton = new JButton("Scores");
-        scoreButton.setBounds(200,350,100,45);
+        scoreButton.setBounds(200,250,100,45);
         this.add(scoreButton);
-        scoreButton.addActionListener(event -> cl.show(cardPanel, "ScoreMenu"));
+        scoreButton.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        allerMenuScore();
+                    }
+                });
 
         quitButton = new JButton("Quitter");
         quitButton.setBounds(200,350,100,45);
@@ -61,6 +66,33 @@ public class MainMenu extends JPanel {
             }
         });
 
+    }
+
+    /**
+     * Va au menu pour lancer une partie
+     */
+    public void allerMenuPlay()
+    {
+        PlayMenu frame = new PlayMenu();
+        frame.setVisible(true);
+        this.dispose();
+    }
+
+    /**
+     * Va au menu des règles
+     */
+    public void allerMenuRegles()
+    {
+        RulesMenu frame = new RulesMenu();
+        frame.setVisible(true);
+        this.dispose();
+    }
+
+    public void allerMenuScore()
+    {
+        scoreMenu frame = new scoreMenu();
+        frame.setVisible(true);
+        this.dispose();
     }
 
     /**

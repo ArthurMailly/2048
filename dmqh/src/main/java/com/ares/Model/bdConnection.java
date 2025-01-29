@@ -47,7 +47,7 @@ public class bdConnection {
             preparedStatement.executeUpdate();
         } catch (SQLException e) 
         {
-            e.printStackTrace();
+            System.out.println("Table already exists");
         }
     }
 

@@ -15,7 +15,7 @@ import java.sql.SQLException;
 /**
  * Cette classe crée le page des règles
  */
-public class scoreMenu extends JPanel
+public class scoreMenu extends JFrame
 {
     JButton retourMenuButton;
     JButton afficherScores;
@@ -25,13 +25,12 @@ public class scoreMenu extends JPanel
 
     /**
      * Constructeur de la page des scores
-     * @param cardPanel
      */
-    public scoreMenu(JPanel cardPanel)
+    public scoreMenu()
     {
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         bd= controllerDmqh.getInstance().connectToDB();
         setBounds(500,100,500, 500);
-        CardLayout cl = (CardLayout) cardPanel.getLayout();
         setLayout(null);
 
         title = new JLabel("Scores", JLabel.CENTER);
@@ -42,7 +41,11 @@ public class scoreMenu extends JPanel
         retourMenuButton = new JButton("Retour");
         retourMenuButton.setBounds(200,400,100,45);
         this.add(retourMenuButton);
-        retourMenuButton.addActionListener(event -> cl.show(cardPanel, "MainMenu"));
+        retourMenuButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                retourMainMenu();
+            }
+        });
         
         afficherScores = new JButton("Afficher les scores");
         afficherScores.setBounds(200,200,100,45);
@@ -75,13 +78,21 @@ public class scoreMenu extends JPanel
         }
     }
 
-    @Override
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        g.setColor(Color.WHITE);
-        g.fillRect(0, 0, 500, 500);
-    }
+//    @Override
+//    public void paintComponent(Graphics g) {
+//        super.paintComponent(g);
+//        g.setColor(Color.WHITE);
+//        g.fillRect(0, 0, 500, 500);
+//    }
 
-    
+    /**
+     * Retourner au menu principal
+     */
+    public void retourMainMenu()
+    {
+        MainMenu frame = new MainMenu();
+        frame.setVisible(true);
+        this.dispose();
+    }
 
 }

@@ -2,8 +2,6 @@ package com.ares.View;
 
 import javax.swing.*;
 
-import com.ares.Model.bdConnection;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,9 +10,8 @@ import java.awt.event.ActionListener;
 /**
  * Cette classe crée le page des règles
  */
-public class RulesMenu extends JPanel
+public class RulesMenu extends JFrame
 {
-    bdConnection bd;
     JButton retourMenuButton;
     JButton afficherScores;
     JLabel title;
@@ -22,12 +19,11 @@ public class RulesMenu extends JPanel
 
     /**
      * Constructeur de la page des règles
-     * @param cardPanel
      */
-    public RulesMenu(JPanel cardPanel)
+    public RulesMenu()
     {
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(500,100,500, 500);
-        CardLayout cl = (CardLayout) cardPanel.getLayout();
         setLayout(null);
 
         title = new JLabel("Règles", JLabel.CENTER);
@@ -38,7 +34,22 @@ public class RulesMenu extends JPanel
         retourMenuButton = new JButton("Retour");
         retourMenuButton.setBounds(200,400,100,45);
         this.add(retourMenuButton);
-        retourMenuButton.addActionListener(event -> cl.show(cardPanel, "MainMenu"));
+        retourMenuButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                retourMainMenu(e);
+            }
+        });
+    }
+
+    /**
+     * Retourner au menu principal
+     * @param e
+     */
+    public void retourMainMenu(ActionEvent e)
+    {
+        MainMenu frame = new MainMenu();
+        frame.setVisible(true);
+        this.dispose();
     }
 
 }

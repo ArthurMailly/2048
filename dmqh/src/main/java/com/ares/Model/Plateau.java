@@ -373,4 +373,21 @@ public class Plateau
         }
     }
 
+    /**
+     * Regarde s'il y a une case qui contient un nombre supérieur ou égal à 2048 auquel cas le joueur a gagné.
+     * @return true si le joueur a gagné
+     */
+    public boolean plateauGagne()
+    {
+        for (int i = 0; i < cote_x; i++)
+        {
+            for (int j = 0; j < cote_y; j++)
+            {
+                if (getCase(i,j).getNombre()>=2048) {return true;}
+            }
+        }
+
+        return false;
+    }
+
 }

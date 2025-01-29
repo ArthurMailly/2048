@@ -14,6 +14,7 @@ public class MainMenu extends JPanel {
     JButton optionsButton;
     JButton rulesButton;
     JButton quitButton;
+    JButton scoreButton;
     JLabel title;
 
 
@@ -45,6 +46,11 @@ public class MainMenu extends JPanel {
         rulesButton.setBounds(200,300,100,45);
         this.add(rulesButton);
         rulesButton.addActionListener(event -> cl.show(cardPanel, "RulesMenu"));
+
+        scoreButton = new JButton("Scores");
+        scoreButton.setBounds(200,350,100,45);
+        this.add(scoreButton);
+        scoreButton.addActionListener(event -> cl.show(cardPanel, "ScoreMenu"));
 
         quitButton = new JButton("Quitter");
         quitButton.setBounds(200,350,100,45);

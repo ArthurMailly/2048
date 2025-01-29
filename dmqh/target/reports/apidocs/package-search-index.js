@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.ares"},{"l":"com.ares.Controller"},{"l":"com.ares.Model"},{"l":"com.ares.View"},{"l":"com.ares.View.assets"}];updateSearchResults();

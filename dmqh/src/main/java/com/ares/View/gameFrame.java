@@ -11,15 +11,31 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.awt.Color;
 import javax.imageio.ImageIO;
+import javax.naming.spi.DirStateFactory.Result;
 import javax.swing.*;
 
 import com.ares.Controller.controllerDmqh;
 import com.ares.Model.Partie;
+import com.ares.Model.bdConnection;
 import com.ares.View.assets.dmqhBoard;
 
-
+@SuppressWarnings("unused")
+/**
+ * Cette classe centralise les éléments graphiques du jeu, et permet de les afficher à l'écran. Elle agit comme un conteneur pour les éléments graphiques du jeu.
+ * Elle hérite de la classe JFrame disponible dans la bibliothèque Swing de Java. Dedans, nous pouvons retrouver les classes principales permettant l'affichage du jeu; 
+ *  - actionController, qui permet de gérer les actions du joueur, en fonction des touches du clavier appuyées.
+ *  - dmqhBoard, qui crée l'aspect visuel du plateau de jeu.
+ * Ainsi que les panels principaux de la fenêtre de jeu:
+    * - mainPanel, qui est le panel principal de la fenêtre de jeu.
+    * - infoPanel, qui est le panel d'information de la fenêtre de jeu.
+    * - scorePanel, qui est le panel de score de la fenêtre de jeu.
+ */
+  
 public class gameFrame extends JFrame {
 
     public actionController actionController;
@@ -27,11 +43,17 @@ public class gameFrame extends JFrame {
     public dmqhBoard dmqhBoard;
     public JLabel exitLabel, restartLabel, scoreLabel;
     public JButton exitButton;
+    public bdConnection bd;
 
     BufferedImage fond;
     GridLayout layoutDMQH;
     Image Logo;
-
+    /**
+     * Constructeur de la fenêtre de jeu, qui initialise les éléments graphiques du jeu.
+     * On définit le titre de la fenêtre, sa taille, sa couleur de fond, et on ajoute les éléments graphiques principaux de la fenêtre de jeu.
+     * On ajoute également un KeyListener pour gérer les actions du joueur.
+     * 
+     */
     public gameFrame()
     {
         controllerDmqh controller = controllerDmqh.getInstance();
@@ -39,6 +61,7 @@ public class gameFrame extends JFrame {
         this.setSize(500, 500);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setBackground(java.awt.Color.WHITE);
+        bd = controller.connectToDB();
         
         dmqhBoard = new dmqhBoard();
         mainPanel = new JPanel(new BorderLayout());
@@ -77,26 +100,61 @@ public class gameFrame extends JFrame {
         this.setVisible(true);
 
     }
+    /**
+     * Cette méthode permet de mettre à jour l'écran de jeu, en fonction de l'état de la partie.
+     * Si la partie est finie, un écran de fin de partie s'affiche, avec le score du joueur.
+     * Sinon, l'écran de jeu est mis à jour, et le score du joueur est affiché.
+     * Afin de mettre à jour, on appelle la méthode updateBoard() de la classe dmqhBoard, qui permet de mettre à jour le plateau de jeu.
+     * 
+     */
 
     
     public void update()
     {
+        
         controllerDmqh controller= controllerDmqh.getInstance();
         if (controller.getPartie().getPartie_finie())
         {
+            ResultSet results = bd.printAllinDB();
+            ArrayList<String> usernameList = new ArrayList<String>();
+            
             int score = controllerDmqh.getInstance().getPartie().getScore();
             dmqhBoard.updateBoard();
             updateScore();
             this.scoreLabel.setText("Votre partie est finie ! Votre score est "+score);
+            try {
+                while (results.next()) {
+                    usernameList.add(results.getString("username"));
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            System.out.println(usernameList);
+
+            if(usernameList.contains(controller.getUsername()))
+            {
+                controller.updateScorInDB(score);
+                
+            }
+            else
+            {
+                controller.insertNewScore(score);
+                
+            }
         }
         else
         {
             dmqhBoard.updateBoard();
             updateScore();
+
+
         }
 
     }
-
+    /**
+     * Cette méthode permet de mettre à jour le score du joueur, en fonction de son score actuel.
+     * Pour un ajout visuel, chaque mise à jour du score change la couleur du texte du score de facon aléatoire.
+     */
     public void updateScore()
     {
         Color randColor = new Color((int)(Math.random() * 256), (int)(Math.random() * 256), (int)(Math.random() * 256));
@@ -105,27 +163,15 @@ public class gameFrame extends JFrame {
         
         if (0 < score && score < 100)
         {
-            scoreLabel.setText("Score du bouffon : "+score);
-        }
-        else if (100<=score && score <250)
-        {
-            scoreLabel.setText("Score du fdp : "+score);
-        }
-        else if (250<=score && score <500)
-        {
-            scoreLabel.setText("Score du BG : "+score);
+            scoreLabel.setText("Score du débutant : "+score);
         }
         else if (500<=score && score <1000)
         {
-            scoreLabel.setText("Score du chien de la casse : "+score);
+            scoreLabel.setText("Score du joueur expérimenté : "+score);
         }
-        else if (1000<=score && score <1500)
+        else if (3000>=score)
         {
-            scoreLabel.setText("Score de l'Homme respectable : "+score);
-        }
-        else
-        {
-            scoreLabel.setText("Score du clochard : "+score);
+            scoreLabel.setText("Score du pro : "+score);
         }
         scoreLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         scoreLabel.setFont(scoreLabel.getFont().deriveFont(20.0f));

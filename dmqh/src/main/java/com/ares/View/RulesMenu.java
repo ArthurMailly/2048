@@ -1,6 +1,9 @@
 package com.ares.View;
 
 import javax.swing.*;
+
+import com.ares.Model.bdConnection;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,7 +14,9 @@ import java.awt.event.ActionListener;
  */
 public class RulesMenu extends JPanel
 {
+    bdConnection bd;
     JButton retourMenuButton;
+    JButton afficherScores;
     JLabel title;
 
 

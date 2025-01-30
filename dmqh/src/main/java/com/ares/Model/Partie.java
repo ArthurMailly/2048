@@ -94,13 +94,6 @@ public class Partie
 
 
     /**
-     * Retourne le plateau
-     * @return le plateau avec le numéros des cases
-     */
-    public Case[][] getTableau() {return this.plateau.getTableau();}
-
-
-    /**
      * Regarde si le joueur peut encore éxécuter un mouvement
      * @return true si le joueur peut encore jouer et false sinon
      */

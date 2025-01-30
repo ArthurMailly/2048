@@ -5,7 +5,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class bdConnection {
     String jdbcUrl = "jdbc:postgresql://localhost:5432/DMQH_java";

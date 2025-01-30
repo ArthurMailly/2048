@@ -113,19 +113,9 @@ public class gameFrame extends JFrame {
                 this.scoreLabel.setText("Vous avez perdu ! Votre score est "+score+" !");
             }
 
-            try {
-                while (results.next()) {
-                    usernameList.add(results.getString("username"));
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-            System.out.println(usernameList);
-
-            if(usernameList.contains(controller.getUsername())) {controller.updateScorInDB(score);}
-            else {controller.insertNewScore(score);}
+            UsernameInputFrame usernameInputFrame = new UsernameInputFrame();
         }
-        else
+        else 
         {
             dmqhBoard.updateBoard();
             updateScore();

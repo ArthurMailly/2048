@@ -17,6 +17,17 @@
 
     <dependencies>
 
+
+
+
+      
+      <dependency>
+        <groupId>org.frgaal</groupId>
+        <artifactId>javadoc</artifactId>
+        <version>21.0.0</version>
+      </dependency>
+
+
       <dependency>
         <groupId>org.postgresql</groupId>
         <artifactId>postgresql</artifactId>
@@ -38,25 +49,36 @@
         <version>1.0.1</version>
       </dependency>
 
+
       
     
     </dependencies>
     <build>
-	<plugins>
-		<plugin>
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-javadoc-plugin</artifactId>
-			<executions>
-				<execution>
-					<id>attach-javadocs</id>
-					<goals>
-						<goal>jar</goal>
-					</goals>
-				</execution>
-			</executions>
-		</plugin>
-	</plugins>
-</build>
-
-    
+      <plugins>
+        <plugin>
+          <groupId>com.iluwatar.urm</groupId>
+          <artifactId>urm-maven-plugin</artifactId>
+          <version>1.4.8</version>
+          <configuration>
+            <outputDirectory>${project.basedir}/target</outputDirectory>
+            <packages>
+              <param>be.cylab.mark.server</param>
+            </packages>
+            <ignores>
+            </ignores>
+            <includeMainDirectory>true</includeMainDirectory>
+            <includeTestDirectory>false</includeTestDirectory>
+            <presenter>graphviz</presenter>
+          </configuration>
+          <executions>
+            <execution>
+              <phase>process-classes</phase>
+              <goals>
+                <goal>map</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+      </plugins>
+    </build>
 </project>

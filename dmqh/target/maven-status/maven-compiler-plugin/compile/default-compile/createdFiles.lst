@@ -1,13 +1,18 @@
+com\ares\View\MainMenu$3.class
+com\ares\View\PlayMenu$4.class
 com\ares\Model\Plateau.class
+com\ares\View\scoreMenu$2.class
 com\ares\Main.class
 com\ares\View\assets\CaseView.class
 com\ares\Model\Case.class
 com\ares\View\PlayMenu$3.class
 com\ares\View\actionController.class
-com\ares\View\OptionMenu.class
+com\ares\View\scoreMenu.class
+com\ares\View\MainMenu$2.class
+com\ares\Model\bdConnection.class
 com\ares\Model\Partie.class
-com\ares\View\Fenetre.class
 com\ares\View\assets\dmqhBoard.class
+com\ares\View\MainMenu$4.class
 com\ares\View\RulesMenu.class
 com\ares\View\PlayMenu$1.class
 com\ares\View\PlayMenu.class
@@ -16,3 +21,4 @@ com\ares\View\PlayMenu$2.class
 com\ares\View\gameFrame.class
 com\ares\View\MainMenu$1.class
 com\ares\Controller\controllerDmqh.class
+com\ares\View\scoreMenu$1.class

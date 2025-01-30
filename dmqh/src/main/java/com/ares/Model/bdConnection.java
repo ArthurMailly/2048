@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class bdConnection {
     String jdbcUrl = "jdbc:postgresql://localhost:5432/DMQH_java";
@@ -65,12 +66,12 @@ public class bdConnection {
         return resultSet;
     }
 
-    public void insertNewScore(int score)
+    public void insertNewScore(String username ,String usernamePlayer,int score)
     {
         try (Connection connection = DriverManager.getConnection(jdbcUrl, username, password);
          PreparedStatement preparedStatement = connection.prepareStatement(INSERT_SQL)) {
 
-        preparedStatement.setString(1, username);
+        preparedStatement.setString(1, usernamePlayer);
         preparedStatement.setInt(2, score);
 
         int rowsInserted = preparedStatement.executeUpdate();
@@ -84,12 +85,12 @@ public class bdConnection {
 
     }
 
-    public void updateScore(int newScore) {
+    public void updateScore(String username,String usernamePlayer,int newScore) {
         try (Connection connection = DriverManager.getConnection(jdbcUrl, username, password);
              PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_SQL)) {
     
             preparedStatement.setInt(1, newScore);
-            preparedStatement.setString(2, username);
+            preparedStatement.setString(2, usernamePlayer);
     
             int rowsUpdated = preparedStatement.executeUpdate();
             if (rowsUpdated > 0) {
@@ -123,6 +124,7 @@ public class bdConnection {
         {
             Connection connection = DriverManager.getConnection(jdbcUrl, username, password);
             connection.close();
+            System.out.println("Connection closed");
         } catch (SQLException e) 
         {
             e.printStackTrace();
@@ -135,6 +137,25 @@ public class bdConnection {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public ArrayList<String> getUsernameList()
+    {
+        ArrayList<String> usernameList = new ArrayList<String>();
+        bdConnection bd = new bdConnection();
+
+
+        ResultSet results = bd.printAllinDB();
+
+        try {
+            while (results.next()) {
+                usernameList.add(results.getString("username"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        System.out.println(usernameList);
+        return usernameList;
     }
 
 

@@ -6,6 +6,7 @@ import com.ares.Model.Partie;
 import com.ares.Model.bdConnection;
 
 import java.awt.Point;
+import java.lang.reflect.Array;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
@@ -84,12 +85,12 @@ public class controllerDmqh {
         return bdConnection;
     }
 
-    public void insertNewScore(int score){
-        bdConnection.insertNewScore(score);
+    public void insertNewScore(String username,String usernamePlayer,int score){
+        bdConnection.insertNewScore(username,usernamePlayer,score);
     }
 
-    public void updateScorInDB(int score){
-        bdConnection.updateScore(score);
+    public void updateScorInDB(String username,String usernamePlayer,int score){
+        bdConnection.updateScore( username,usernamePlayer, score);
     }
 
     public void updateScore(int score){
@@ -106,6 +107,10 @@ public class controllerDmqh {
 
     public String getUsername(){
         return bdConnection.getUsername();
+    }
+
+    public ArrayList<String> getUsernameList(){
+        return bdConnection.getUsernameList();
     }
 
 

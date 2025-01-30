@@ -12,14 +12,14 @@ public class Partie
     public static controllerDmqh controller = controllerDmqh.getInstance();
     private Plateau plateau;
     private int cote;
-    private int difficulte=2;
-    private static Boolean partie_finie = false;
+    //private int difficulte=2;
+    private static boolean partie_finie = false;
 
 
     /**
      * Constructeur d'une partie
      */
-    private Partie()
+    public Partie()
     {
         this.cote = controller.getDifficultePartieFromView();
         this.plateau = new Plateau(cote, cote);
@@ -97,7 +97,7 @@ public class Partie
      * Regarde si le joueur peut encore éxécuter un mouvement
      * @return true si le joueur peut encore jouer et false sinon
      */
-    public Boolean PeutEncoreJouer()
+    public boolean PeutEncoreJouer()
     {
         Plateau plateau2 = new Plateau(cote, cote);
         plateau2.copyPlateau(plateau);
@@ -117,7 +117,7 @@ public class Partie
      * Regarde si le joueur a gagné
      * @return true si le joueur a gagné
      */
-    public Boolean VerificationGagner()
+    public boolean VerificationGagner()
     {
 
         for(int i = 0; i < this.cote; i++)
@@ -135,7 +135,7 @@ public class Partie
      * Retourne partie_finie
      * @return partie_finie
      */
-    public Boolean getPartie_finie()
+    public boolean getPartie_finie()
     {
         PeutEncoreJouer();
         return partie_finie;

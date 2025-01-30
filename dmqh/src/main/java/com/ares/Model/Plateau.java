@@ -102,8 +102,8 @@ public class Plateau
      * Déplace l'ensemble des cases vers la gauche et fusionne les cases s'il y a besoin
      * @return deplacement_fait qui est à égal à true si au moins une case a été ajouté
      */
-    public Boolean DeplacementGauche() {
-        Boolean deplacement_fait = false;
+    public boolean DeplacementGauche() {
+        boolean deplacement_fait = false;
 
         // Réinitialise l'état de fusion pour toutes les cases au début
         ToutesCasesPasFusionnees();
@@ -154,8 +154,8 @@ public class Plateau
      * Déplace l'ensemble des cases vers la droite et fusionne les cases s'il y a besoin
      * @return deplacement_fait qui est à égal à true si au moins une case a été ajouté
      */
-    public Boolean DeplacementDroite() {
-        Boolean deplacement_fait = false;
+    public boolean DeplacementDroite() {
+        boolean deplacement_fait = false;
 
         // Réinitialise l'état de fusion pour toutes les cases au début
         ToutesCasesPasFusionnees();
@@ -206,8 +206,8 @@ public class Plateau
      * Déplace l'ensemble des cases vers le haut et fusionne les cases s'il y a besoin
      * @return deplacement_fait qui est à égal à true si au moins une case a été ajouté
      */
-    public Boolean DeplacementHaut() {
-        Boolean deplacement_fait = false;
+    public boolean DeplacementHaut() {
+        boolean deplacement_fait = false;
 
         // Réinitialise l'état de fusion pour toutes les cases au début
         ToutesCasesPasFusionnees();
@@ -258,8 +258,8 @@ public class Plateau
      * Déplace l'ensemble des cases vers le bas et fusionne les cases s'il y a besoin
      * @return deplacement_fait qui est à égal à true si au moins une case a été ajouté
      */
-    public Boolean DeplacementBas() {
-        Boolean deplacement_fait = false;
+    public boolean DeplacementBas() {
+        boolean deplacement_fait = false;
 
         // Réinitialise l'état de fusion pour toutes les cases au début
         ToutesCasesPasFusionnees();

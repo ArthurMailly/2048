@@ -64,9 +64,5 @@ public class UsernameInputFrame extends JFrame {
         }
         bdConnection.closeConnection();
     }
-    
-    public static void main(String[] args) {
-        new UsernameInputFrame();
-    }
 }
 

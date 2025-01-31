@@ -17,7 +17,6 @@ import com.ares.Controller.controllerDmqh;
  */
 public class dmqhBoard extends JPanel
 {
-    public BufferedImage fond;
     private int taille;
     private ArrayList<CaseView> Cases = new ArrayList<CaseView>();
     private static controllerDmqh controller = controllerDmqh.getInstance();

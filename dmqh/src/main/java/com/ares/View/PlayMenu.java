@@ -33,7 +33,7 @@ public class PlayMenu extends JFrame
         this.add(label);
 
         easyMode = new JButton("Facile");
-        easyMode.setBounds(200, 150, 100, 45);
+        easyMode.setBounds(200, 200, 100, 45);
         this.add(easyMode);
         easyMode.addActionListener(new ActionListener() {
             @Override
@@ -53,7 +53,7 @@ public class PlayMenu extends JFrame
         });
 
         hardMode = new JButton("Difficile");
-        hardMode.setBounds(200, 350, 100, 45);
+        hardMode.setBounds(200, 300, 100, 45);
         this.add(hardMode);
         hardMode.addActionListener(new ActionListener() {
             @Override
